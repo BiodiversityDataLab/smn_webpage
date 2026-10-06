@@ -22,62 +22,147 @@
 <body>
 <header class="site-header" id="top">
     <div class="container header-inner">
-        <a class="brand" href="#top" aria-label="Swedish Metabarcoding Network home">
-            <span class="brand-logo-mark" aria-hidden="true">
-                <img class="brand-logo-image" src="files/smn_logo_boreal.png" alt="">
-            </span>
-            <span class="brand-text">
-          <span class="brand-title">Swedish Metabarcoding Network</span>
-          <span class="brand-subtitle">Biodiversity genomics for nature monitoring</span>
-        </span>
+        <a class="brand-hero" href="#top" aria-label="Swedish Metabarcoding Network home">
+            <img class="brand-hero-logo" src="files/smn_logo_boreal.png" alt="Swedish Metabarcoding Network logo">
         </a>
-
-        <nav class="nav" aria-label="Primary">
-            <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"
-                    aria-controls="navMenu">
-                <span class="nav-toggle-bars" aria-hidden="true"></span>
-            </button>
-
-            <div class="nav-menu" id="navMenu">
-                <a class="nav-link" href="#asv-uploading">Upload eDNA data </a>
-                <a class="nav-link" href="#about">About the network</a>
-                <a class="nav-link" href="#resources">Resources</a>
-                <a class="nav-link" href="#events">Events and trainings</a>
-                <a class="nav-link" href="#opportunities">Opportunities</a>
-                <a class="nav-link" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Join</a>
-                <a class="nav-link" href="#contact">Contact</a>
-            </div>
-            <button class="theme-toggle" type="button" data-icon="sun" aria-label="Toggle dark mode" title="Toggle theme">
-                <span class="theme-icon" aria-hidden="true">☀</span>
-            </button>
-        </nav>
+        <p class="header-title">Swedish Metabarcoding Network</p>
     </div>
 </header>
 
+<nav class="site-nav" aria-label="Primary">
+    <div class="container nav-inner">
+        <a class="nav-mini-brand" href="#top" aria-label="Back to top" tabindex="-1">
+            <img src="files/smn_logo_boreal.png" alt="">
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+                aria-controls="navMenu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+
+        <div class="nav-menu" id="navMenu">
+            <div class="nav-group">
+                <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="navAbout">
+                    About us <span class="nav-caret" aria-hidden="true"></span>
+                </button>
+                <div class="nav-dropdown" id="navAbout">
+                    <a class="nav-sublink" href="#mission">Our mission</a>
+                    <a class="nav-sublink" href="#about">About our network</a>
+                    <a class="nav-sublink" href="#metabarcoding">What is metabarcoding?</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="navResources">
+                    Resources <span class="nav-caret" aria-hidden="true"></span>
+                </button>
+                <div class="nav-dropdown" id="navResources">
+                    <a class="nav-sublink nav-sublink--highlight" href="#asv-uploading">Publishing your data via the ASV portal</a>
+                    <a class="nav-sublink" href="#events">Events &amp; trainings</a>
+                    <a class="nav-sublink" href="#tools">Tools for metabarcoding</a>
+                    <a class="nav-sublink" href="#protocols">Protocols</a>
+                    <a class="nav-sublink" href="#tutorials">Tutorials</a>
+                    <a class="nav-sublink" href="#dataset-highlights">Dataset highlights</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="navJoin">
+                    Join us <span class="nav-caret" aria-hidden="true"></span>
+                </button>
+                <div class="nav-dropdown" id="navJoin">
+                    <a class="nav-sublink" href="#opportunities">Opportunities in metabarcoding</a>
+                    <a class="nav-sublink" href="#monitoring">National biodiversity monitoring programmes</a>
+                    <a class="nav-sublink" href="#networks">Metabarcoding networks worldwide</a>
+                    <a class="nav-sublink" href="#join">Join our community &amp; newsletter</a>
+                    <a class="nav-sublink" href="#contact">Contact &amp; partners</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <a class="btn btn-primary nav-cta" href="#asv-uploading">Share your data</a>
+            <button class="theme-toggle" type="button" data-icon="sun" aria-label="Toggle dark mode" title="Toggle theme">
+                <span class="theme-icon" aria-hidden="true">☀</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Side navigation: fixed left column on wide screens (replaces the top menu there) -->
+<nav class="side-nav" aria-label="Page sections">
+    <a class="side-nav-logo" href="#top" aria-label="Back to top">
+        <img src="files/smn_logo_boreal.png" alt="">
+    </a>
+    <div class="side-nav-group" data-group="about">
+        <span class="side-nav-topic">About us</span>
+        <a class="side-nav-link" href="#mission"><span>Our mission</span></a>
+        <a class="side-nav-link" href="#about"><span>About our network</span></a>
+        <a class="side-nav-link" href="#metabarcoding"><span>What is metabarcoding?</span></a>
+    </div>
+    <div class="side-nav-group" data-group="resources">
+        <span class="side-nav-topic">Resources</span>
+        <a class="side-nav-link" href="#asv-uploading"><span>Publishing your data via the ASV portal</span></a>
+        <a class="side-nav-link" href="#events"><span>Events &amp; trainings</span></a>
+        <a class="side-nav-link" href="#tools"><span>Tools for metabarcoding</span></a>
+        <a class="side-nav-link" href="#protocols"><span>Protocols</span></a>
+        <a class="side-nav-link" href="#tutorials"><span>Tutorials</span></a>
+        <a class="side-nav-link" href="#dataset-highlights"><span>Dataset highlights</span></a>
+    </div>
+    <div class="side-nav-group" data-group="join">
+        <span class="side-nav-topic">Join us</span>
+        <a class="side-nav-link" href="#opportunities"><span>Opportunities</span></a>
+        <a class="side-nav-link" href="#monitoring"><span>Monitoring programmes</span></a>
+        <a class="side-nav-link" href="#networks"><span>Networks worldwide</span></a>
+        <a class="side-nav-link" href="#join"><span>Join our community</span></a>
+        <a class="side-nav-link" href="#contact"><span>Contact &amp; partners</span></a>
+    </div>
+    <div class="side-nav-actions">
+        <a class="btn" href="#asv-uploading">Share your data</a>
+        <button class="theme-toggle" type="button" data-icon="sun" aria-label="Toggle dark mode" title="Toggle theme">
+            <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+    </div>
+</nav>
+
 <main>
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container hero-grid">
+    <!-- MISSION (hero) -->
+    <section class="hero" id="mission">
+        <div class="container">
             <div class="hero-copy reveal">
                 <div class="hero-title-wrap">
                     <div class="hero-title-copy">
+                        <div class="section-head title-bar--right mission-head">
+                            <span class="section-kicker">About us</span>
+                            <h2>Our mission</h2>
+                        </div>
                         <h1>
                             Connecting knowledge, best practices, and data
                         </h1>
-                        <p class="lead">
-                            The Swedish Metabarcoding Network (SMN) aims to improve the technology readiness of
-                            metabarcoding as a tool for effective biodiversity monitoring.
-                            We are a network of partners across Sweden who collaborate to develop and share best
-                            practices, protocols, and data for metabarcoding in Sweden.
-                            This covers all parts of the metabarcoding process, from fieldwork via labwork to data
-                            analysis and publication.
-                        </p>
-                        <p class="lead">
-                            Part of our mission is to enable other researchers and non-academic partners to utilize
-                            metabarcoding and interpret the resulting biodiversity data. There is a particular emphasis
-                            on making existing and newly produced datasets available as FAIR biodiversity data,
-                            increasing their utility and impact.
-                        </p>
+                        <div class="mission-body mission-body--single">
+                            <div class="mission-text">
+                                <p class="lead">
+                                    The Swedish Metabarcoding Network (SMN) aims to improve the technology readiness of
+                                    metabarcoding as a tool for effective biodiversity monitoring. We are a network of partners
+                                    across Sweden who collaborate to develop and share best practices, protocols, and data for
+                                    metabarcoding in Sweden. This covers all parts of the metabarcoding process, from fieldwork
+                                    via labwork to data analysis and publication.
+                                </p>
+                                <p class="lead">
+                                    Part of our mission is to enable other researchers and non-academic partners to utilize
+                                    metabarcoding and interpret the resulting biodiversity data. There is a particular emphasis
+                                    on making existing and newly produced datasets available as FAIR biodiversity data,
+                                    increasing their utility and impact.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="cta-row" aria-label="Quick navigation">
+                            <a class="btn btn-secondary" href="#metabarcoding">What is metabarcoding?</a>
+                            <a class="btn btn-primary" href="#asv-uploading">Share your data via the ASV portal</a>
+                            <a class="btn btn-secondary" href="#join">Join the network</a>
+                        </div>
                     </div>
                     <figure class="hero-photo" aria-label="eDNA biodiversity data collection at field site">
                         <img src="files/cover_picture_ai_vertical.png" alt="eDNA biodiversity data collection at field site"/>
@@ -106,61 +191,174 @@
                         <div class="stat-label">Training events</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="cta-row" aria-label="Quick navigation">
-                    <a class="btn btn-secondary" href="#asv-uploading">Share your data</a>
-                    <a class="btn btn-secondary" href="#about">About the network</a>
-                    <a class="btn btn-secondary" href="#resources">Explore resources</a>
-                    <a class="btn btn-secondary" href="#events">Events and trainings</a>
-                    <a class="btn btn-secondary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Join the network</a>
-                    <a class="btn btn-secondary" href="#contact">Contact</a>
-                </div>
+    <!-- ===================== ABOUT US ===================== -->
+
+    <!-- ABOUT -->
+    <section class="section band band-tint" id="about">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>About our network</h2>
+                <p>
+                    We support harmonized metabarcoding practices across terrestrial, freshwater, and marine
+                    environments so biodiversity observations become comparable, reproducible, and reusable.
+                </p>
             </div>
 
-            <div class="hero-card reveal">
-                <div class="glass-card">
-                    <h2 id="asv-uploading">Publishing your data via the ASV portal</h2>
+            <h3 class="subsection-title reveal" id="goals">Our goals</h3>
+            <div class="goals-grid">
+                <article class="goal-card reveal">
+                    <span class="goal-number" aria-hidden="true">1</span>
+                    <p>Improve the technology readiness of metabarcoding as a tool for effective biodiversity monitoring</p>
+                </article>
+                <article class="goal-card reveal">
+                    <span class="goal-number" aria-hidden="true">2</span>
+                    <p>Create a network of researchers and biodiversity practitioners across Sweden</p>
+                </article>
+                <article class="goal-card reveal">
+                    <span class="goal-number" aria-hidden="true">3</span>
+                    <p>Enable researchers and non-academic partners to utilise metabarcoding data</p>
+                </article>
+                <a class="goal-card goal-card--highlight reveal" href="#asv-uploading">
+                    <span class="goal-number" aria-hidden="true">4</span>
+                    <p>Advancing FAIR biodiversity data by <strong>mobilising metabarcoding data to the ASV Portal</strong></p>
+                    <span class="goal-link">Why upload your data? →</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-                    <div class="asv-advantages" aria-label="Advantages of uploading data to a global database like the ASV Portal">
-                        <h3>Advantages of uploading your data to the ASV Portal (ASV = Amplicon Sequence Variant)</h3>
-                        <ol>
-                            <li><strong>Visibility</strong><span>Increase the visibility and citation of your work. Each dataset receives a permanent GBIF DOI that makes your data citable and traceable in scientific publications.</span></li>
-                            <li><strong>FAIR Data</strong><span>Make your ASVs Findable, Accessible, Interoperable, and Reusable. The portal ensures consistent metadata, open formats, and long-term accessibility.</span></li>
-                            <li><strong>Up to date</strong><span>Your ASVs are regularly re-annotated using the latest reference databases. This keeps your taxonomic assignments up to date without additional work on your side.</span></li>
-                            <li><strong>Insight and comparison</strong><span>Compare your results with other metabarcoding datasets. The portal enables cross-study analyses and helps you identify broader biodiversity patterns.</span></li>
-                            <li><strong>Contribute to global knowledge</strong><span>By uploading your ASVs, you support national and international biodiversity research and help build a comprehensive picture of species distributions.</span></li>
-                            <li><strong>Link to environmental data </strong><span>View your and other's data in the interactive spatial portal, allowing to link it to a big selection of environmental and contextual layers.</span></li>
-                        </ol>
+    <!-- WHAT IS METABARCODING -->
+    <section class="section" id="metabarcoding">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>What is metabarcoding?</h2>
+                <p>
+                    Metabarcoding identifies many organisms at once from the DNA contained in environmental or bulk
+                    samples. These seven steps take a sample from the field to FAIR biodiversity data.
+                </p>
+            </div>
+
+            <ol class="workflow">
+                <li class="workflow-step reveal" style="--step-color: #2f7d32;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">1</span>
+                        <h3>Field sampling</h3>
                     </div>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/1-field-sampling.jpg" alt="" loading="lazy"></div>
+                    <p>Collect environmental or bulk samples from terrestrial, freshwater or marine environments.</p>
+                </li>
+                <li class="workflow-step reveal" style="--step-color: #2f7d32;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">2</span>
+                        <h3>DNA extraction</h3>
+                    </div>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/2-dna-extraction.jpg" alt="" loading="lazy"></div>
+                    <p>Extract DNA from samples to capture genetic material from multiple organisms.</p>
+                </li>
+                <li class="workflow-step reveal" style="--step-color: #1f8a84;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">3</span>
+                        <h3>PCR &amp; library prep</h3>
+                    </div>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/3-pcr-library-prep.jpg" alt="" loading="lazy"></div>
+                    <p>Amplify target markers with PCR and prepare indexed libraries for sequencing.</p>
+                </li>
+                <li class="workflow-step reveal" style="--step-color: #2266b0;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">4</span>
+                        <h3>Sequencing</h3>
+                    </div>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/4-sequencing.jpg" alt="" loading="lazy"></div>
+                    <p>Sequence the libraries using high-throughput sequencing technologies.</p>
+                </li>
+                <li class="workflow-step reveal" style="--step-color: #1d4f91;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">5</span>
+                        <h3>Bioinformatics analysis</h3>
+                    </div>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/5-bioinformatics.jpg" alt="" loading="lazy"></div>
+                    <p>Process sequences, derive ASVs, assign taxonomy and create taxonomy tables.</p>
+                </li>
+                <li class="workflow-step workflow-step--highlight reveal" style="--step-color: #2a6f97;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">6</span>
+                        <h3>ASV portal</h3>
+                    </div>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/6-asv-portal.jpg" alt="" loading="lazy"></div>
+                    <p>Upload your ASV data to the ASV Portal for curation, annotation, long-term storage and public access in SBDI and GBIF.</p>
+                    <a class="workflow-link" href="#asv-uploading">How to upload →</a>
+                </li>
+                <li class="workflow-step reveal" style="--step-color: #c98a1b;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">7</span>
+                        <h3>FAIR biodiversity data</h3>
+                    </div>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/7-fair-data.jpg" alt="" loading="lazy"></div>
+                    <p>FAIR data are discoverable, accessible and reusable for research, monitoring and decision-making.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
 
-                    <div class="asv-video-guide" aria-label="Video guide for uploading ASV data">
-                        <h3>Video Guide: How to upload ASV data</h3>
+    <!-- ===================== RESOURCES ===================== -->
 
-                        <div class="asv-media-actions" aria-label="Upload tutorial and support actions">
-                            <div class="asv-video-frame">
-                                <iframe
-                                        src="https://www.youtube.com/embed/a9ABLK0OzjU?autoplay=1&mute=1&playsinline=1&rel=0"
-                                        title="How to upload ASV data to the ASV Portal"
-                                        loading="lazy"
-                                        referrerpolicy="strict-origin-when-cross-origin"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowfullscreen>
-                                </iframe>
-                            </div>
+    <!-- ASV PORTAL -->
+    <section class="section band band-tint" id="asv-uploading">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <span class="section-kicker">Resources</span>
+                <h2>Publishing your data via the ASV portal</h2>
+                <p>
+                    Mobilising metabarcoding data to the ASV Portal is one of our core aims. The portal curates and
+                    annotates your Amplicon Sequence Variants (ASVs) and makes them publicly available through SBDI and
+                    GBIF.
+                </p>
+            </div>
 
-                            <div class="asv-action-stack">
-                                <a class="btn btn-primary btn-wide asv-slides-button" href="files/Uploading_Data_on_ASV.pdf"
-                                   download="Uploading_Data_on_ASV.pdf">
-                                    Download slides from the video
-                                </a>
+            <div class="asv-panel reveal">
+                <div class="asv-advantages" aria-label="Advantages of uploading data to the ASV Portal">
+                    <h3>Advantages of uploading your data to the ASV Portal</h3>
+                    <ol>
+                        <li><strong>Visibility</strong><span>Increase the visibility and citation of your work. Each dataset receives a permanent GBIF DOI that makes your data citable and traceable in scientific publications.</span></li>
+                        <li><strong>FAIR Data</strong><span>Make your ASVs Findable, Accessible, Interoperable, and Reusable. The portal ensures consistent metadata, open formats, and long-term accessibility.</span></li>
+                        <li><strong>Up to date</strong><span>Your ASVs are regularly re-annotated using the latest reference databases. This keeps your taxonomic assignments up to date without additional work on your side.</span></li>
+                        <li><strong>Insight and comparison</strong><span>Compare your results with other metabarcoding datasets. The portal enables cross-study analyses and helps you identify broader biodiversity patterns.</span></li>
+                        <li><strong>Contribute to global knowledge</strong><span>Your uploaded ASV data will be made available on GBIF, supporting biodiversity research and helping build a comprehensive picture of species distributions.</span></li>
+                        <li><strong>Link to environmental data</strong><span>View your and other's data in the interactive spatial portal, allowing to link it to a big selection of environmental and contextual layers.</span></li>
+                    </ol>
+                </div>
 
-                                <a class="btn btn-primary btn-wide" href="https://asv-portal.biodiversitydata.se/"
-                                   target="_blank" rel="noopener noreferrer">
-                                    Open ASV portal
-                                </a>
+                <div class="asv-video-guide" aria-label="Video guide for uploading ASV data">
+                    <h3>Video Guide: How to upload ASV data</h3>
 
-                                <a class="btn btn-primary btn-wide asv-help-button" href="#contact">Request free help from a data steward</a>
-                            </div>
+                    <div class="asv-media-actions" aria-label="Upload tutorial and support actions">
+                        <div class="asv-video-frame">
+                            <iframe
+                                    src="https://www.youtube.com/embed/a9ABLK0OzjU?rel=0"
+                                    title="How to upload ASV data to the ASV Portal"
+                                    loading="lazy"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <div class="asv-action-stack">
+                            <a class="btn btn-primary btn-wide" href="https://asv-portal.biodiversitydata.se/"
+                               target="_blank" rel="noopener noreferrer">
+                                Open ASV portal
+                            </a>
+
+                            <a class="btn btn-primary btn-wide" href="files/Uploading_Data_on_ASV.pdf"
+                               download="Uploading_Data_on_ASV.pdf">
+                                Download slides from the video
+                            </a>
+
+                            <a class="btn btn-primary btn-wide" href="#contact">Request free help from a data steward</a>
                         </div>
                     </div>
                 </div>
@@ -168,93 +366,103 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
+    <!-- EVENTS -->
+    <section class="section" id="events">
         <div class="container">
-            <div class="section-head reveal">
-                <h2>About the network</h2>
-                <p>
-                    We support harmonized metabarcoding practices across terrestrial, freshwater, and marine
-                    environments so biodiversity observations become comparable, reproducible, and reusable.
-                </p>
+            <div class="section-head title-bar--right reveal">
+                <h2>Events & Training</h2>
+                <p>Training sessions focused on biodiversity monitoring, methods, and data publishing.</p>
             </div>
 
-            <div class="cards-grid">
-                <article class="feature-card reveal">
-                    <h3>Shared best practices</h3>
-                    <p>Guidance for sampling design, contamination control, marker choice, reference matching, and
-                        transparent reporting.</p>
+            <div class="timeline">
+
+                <article class="event reveal" id="event-nucleotide-sequence-search" data-date="2026-10-07">
+                    <div class="event-date">
+                        <span class="event-day">07 OCT</span>
+                        <span class="event-month">2026</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Nucleotide Sequence Search - Technical Support Hour for Nodes</h3>
+                        <p>Technical Support Hour • Open to anyone interested</p>
+                        <p class="event-meta-text"> GBIF Technical Support Hour • 16:00 • Zoom</p>
+                    </div>
+                    <div class="event-actions">
+                        <a class="btn btn-primary" href="https://us02web.zoom.us/meeting/register/7_3oIGfhR4K_VjncQ6hadA" target="_blank" rel="noopener noreferrer">Registration here</a>
+                        <a class="btn btn-primary" href="https://discourse.gbif.org/t/nucleotide-sequence-search-on-gbif-org-technical-support-hour-for-nodes/6443" target="_blank" rel="noopener noreferrer">Submit questions in advance</a>
+                    </div>
                 </article>
 
-                <article class="feature-card reveal">
-                    <h3>Interoperable data</h3>
-                    <p>FAIR workflows that turn local observations into interoperable biodiversity records through SBDI
-                        and ASV portal pipelines.</p>
+                <article class="event reveal" id="event-biosyst-edna" data-date="2026-08-18">
+                    <div class="event-date">
+                        <span class="event-day">18 AUG</span>
+                        <span class="event-month">2026</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Exploring eDNA in SBDI</h3>
+                        <p>Hands-on workshop on accessing, processing, and exploring eDNA metabarcoding data with SBDI resources and R.</p>
+                        <p class="event-meta-text">BioSyst Conference 2026 • 10:30–12:00 • Workshop</p>
+                    </div>
+                    <div class="event-actions">
+                        <a class="btn btn-primary" href="#tutorial-asv-r">View tutorial</a>
+                    </div>
                 </article>
 
-                <article class="feature-card reveal">
-                    <h3>Training & community</h3>
-                    <p>Workshops, office hours, and peer support across lab, bioinformatics, and data management.</p>
+                <article class="event reveal" id="event-biosyst-ampliseq" data-date="2026-08-18">
+                    <div class="event-date">
+                        <span class="event-day">18 AUG</span>
+                        <span class="event-month">2026</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Get started with nf-core/ampliseq</h3>
+                        <p>Practical introduction to DADA2 denoising and taxonomic annotation of amplicon reads with nf-core/ampliseq.</p>
+                        <p class="event-meta-text">BioSyst Conference 2026 • 13:00–14:30 • Workshop</p>
+                    </div>
+                    <div class="event-actions">
+                        <a class="btn btn-primary" href="#tutorial-ampliseq">View tutorial</a>
+                    </div>
                 </article>
-            </div>
 
-            <div class="focus-subsection">
-                <div class="section-head section-head-compact reveal">
-                    <h2 id="focus">What we focus on</h2>
-                    <p>Four pillars that move projects from raw reads to trusted biodiversity knowledge.</p>
-                </div>
+                <article class="event reveal" id="event-dna-intro" data-date="2026-06-03">
+                    <div class="event-date">
+                        <span class="event-day">03 JUN</span>
+                        <span class="event-month">2026</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Introduction to DNA in biodiversity data - Technical Support Hour for Nodes</h3>
+                        <p>3 June 2026 at 16:00 CEST • Online</p>
+                        <p class="event-meta-text">Technical Support Hour • Open to anyone interested</p>
+                    </div>
+                    <div class="event-actions"></div>
+                </article>
 
-                <div class="pillars">
-                    <div class="pillar reveal">
-                        <div class="pillar-icon" aria-hidden="true">🧪</div>
-                        <h3>Wet-lab workflows</h3>
-                        <p>Field-to-lab workflows for samples, controls, primer choice, indexing, and robust QC.</p>
+                <article class="event reveal" id="event-edna-sbdi" data-date="2026-02-11">
+                    <div class="event-date">
+                        <span class="event-day">11 FEB</span>
+                        <span class="event-month">2026</span>
                     </div>
-                    <div class="pillar reveal">
-                        <div class="pillar-icon" aria-hidden="true">🧬</div>
-                        <h3>Bioinformatics</h3>
-                        <p>Denoising, ASVs/OTUs, chimera handling, taxonomy, and reproducible pipelines.</p>
+                    <div class="event-body">
+                        <h3>Exploring eDNA in SBDI</h3>
+                        <p>
+                            Training event held during SBDI Days 2026 in Stockholm.
+                            A related Hands-on tutorial is available in
+                            <a href="#tutorials">Resources</a>.
+                        </p>
+                        <p class="event-meta-text">SBDI Days 2026 • Stockholm • Training</p>
                     </div>
-                    <div class="pillar reveal">
-                        <div class="pillar-icon" aria-hidden="true">🗃️</div>
-                        <h3>FAIR data & publishing</h3>
-                        <p>Metadata, standards, archiving, and publication pathways into national infrastructure.</p>
+                    <div class="event-actions">
+                        <a class="btn btn-primary" href="#tutorial-asv-r">View tutorial</a>
+                        <a class="btn btn-primary" href="https://biodiversitydata-se.github.io/sbdi-days-eDNA/" target="_blank" rel="noopener noreferrer">Event page</a>
                     </div>
-                    <div class="pillar reveal">
-                        <div class="pillar-icon" aria-hidden="true">🤝</div>
-                        <h3>Coordination</h3>
-                        <p>Cross-site coordination, shared protocol libraries, and national biodiversity roadmapping.</p>
-                    </div>
-                </div>
-
-                <div class="callout reveal" id="join">
-                    <h3>Want to contribute?</h3>
-                    <ol class="contribute-list">
-                        <li class="contribute-item">
-                            <div class="contribute-copy">
-                                <h4>Join the Network</h4>
-                                <p>Share metabarcoding data, protocols, propose working groups, or help coordinate training.</p>
-                            </div>
-                            <a class="btn btn-primary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Membership form</a>
-                        </li>
-                        <li class="contribute-item">
-                            <div class="contribute-copy">
-                                <h4>Help us getting an overview</h4>
-                                <p>If you produce metabarcoding data and are interested in making them FAIR, fill out this short survey.</p>
-                            </div>
-                            <a class="btn btn-primary" href="https://forms.microsoft.com/e/UGTTGuYtAT" target="_blank" rel="noopener noreferrer">Survey</a>
-                        </li>
-                    </ol>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- RESOURCES -->
-    <section class="section" id="resources">
+    <!-- TOOLS -->
+    <section class="section band band-tint" id="tools">
         <div class="container">
-            <div class="section-head reveal">
-                <h2>Resources</h2>
+            <div class="section-head title-bar--right reveal">
+                <h2>Tools for metabarcoding</h2>
                 <p>Quick access to key tools and guidance for metabarcoding projects in Sweden.</p>
             </div>
 
@@ -303,70 +511,88 @@
                     <p>Bring structure to your research with a secure platform for developing and sharing reproducible methods.</p>
                     <span class="resource-link">Open resource →</span>
                 </a>
+            </div>
+        </div>
+    </section>
 
-
+    <!-- PROTOCOLS -->
+    <section class="section" id="protocols">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>Protocols</h2>
+                <p>Curated protocols for insect metabarcoding workflows, grouped by theme.</p>
             </div>
 
-            <div class="protocols-panel reveal" id="protocols">
-                <h3>Protocols</h3>
-                <p class="muted">Curated protocols for insect metabarcoding workflows, grouped by theme.</p>
+            <div class="protocol-group reveal">
+                <h3>Bulk samples to sequencing</h3>
+                <ul class="protocol-list">
+                    <li class="protocol-item">
+                        <a class="protocol-title" href="https://www.protocols.io/view/favis-fast-and-versatile-protocol-for-metabarcodin-kqdg36261g25/v2" target="_blank" rel="noopener noreferrer">
+                            FAVIS v2: Fast and Versatile protocol for bulk insect metabarcoding
+                        </a>
+                        <p>Non-destructive, high-throughput workflow from lab setup and sample handling to DNA extraction, library prep and sequencing.</p>
+                        <span class="protocol-meta">Malaise/bulk insect catches • Cost-effective • Scales to large monitoring projects</span>
+                    </li>
 
-                <div class="protocol-groups">
-                    <article class="protocol-group">
-                        <h4>Bulk samples to sequencing</h4>
-                        <ul class="protocol-list">
-                            <li class="protocol-item">
-                                <a class="protocol-title" href="https://www.protocols.io/view/favis-fast-and-versatile-protocol-for-metabarcodin-kqdg36261g25/v2" target="_blank" rel="noopener noreferrer">
-                                    FAVIS v2: Fast and Versatile protocol for bulk insect metabarcoding
-                                </a>
-                                <p>Non-destructive, high-throughput workflow from lab setup and sample handling to DNA extraction, library prep and sequencing.</p>
-                                <span class="protocol-meta">Malaise/bulk insect catches • Cost-effective • Scales to large monitoring projects</span>
-                            </li>
+                    <li class="protocol-item">
+                        <a class="protocol-title" href="https://www.protocols.io/view/sample-homogenization-and-dna-extraction-for-bulk-yxmvm31bbl3p/v1" target="_blank" rel="noopener noreferrer">
+                            Sample homogenization and DNA extraction for bulk insect catches
+                        </a>
+                        <p>Whole-catch homogenization and magnetic bead purification protocol to recover additional DNA from bulk trap samples.</p>
+                        <span class="protocol-meta">Bulk insect soup workflow • Compatible with FAVIS-derived samples</span>
+                    </li>
+                </ul>
+            </div>
 
-                            <li class="protocol-item">
-                                <a class="protocol-title" href="https://www.protocols.io/view/sample-homogenization-and-dna-extraction-for-bulk-yxmvm31bbl3p/v1" target="_blank" rel="noopener noreferrer">
-                                    Sample homogenization and DNA extraction for bulk insect catches
-                                </a>
-                                <p>Whole-catch homogenization and magnetic bead purification protocol to recover additional DNA from bulk trap samples.</p>
-                                <span class="protocol-meta">Bulk insect soup workflow • Compatible with FAVIS-derived samples</span>
-                            </li>
-                        </ul>
-                    </article>
+            <div class="protocol-group reveal">
+                <h3>Standardization and controls</h3>
+                <ul class="protocol-list">
+                    <li class="protocol-item">
+                        <a class="protocol-title" href="https://www.protocols.io/view/synthetic-coi-spike-ins-for-use-in-metabarcoding-b-14egn33ryl5d/v2" target="_blank" rel="noopener noreferrer">
+                            Synthetic COI spike-ins for metabarcoding-based insect surveys
+                        </a>
+                        <p>Design, production and storage of synthetic COI spike-ins as internal controls to improve comparability across samples and experiments.</p>
+                        <span class="protocol-meta">Internal positive controls • Cross-study comparability • Method harmonization</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-                    <article class="protocol-group">
-                        <h4>Standardization and controls</h4>
-                        <ul class="protocol-list">
-                            <li class="protocol-item">
-                                <a class="protocol-title" href="https://www.protocols.io/view/synthetic-coi-spike-ins-for-use-in-metabarcoding-b-14egn33ryl5d/v2" target="_blank" rel="noopener noreferrer">
-                                    Synthetic COI spike-ins for metabarcoding-based insect surveys
-                                </a>
-                                <p>Design, production and storage of synthetic COI spike-ins as internal controls to improve comparability across samples and experiments.</p>
-                                <span class="protocol-meta">Internal positive controls • Cross-study comparability • Method harmonization</span>
-                            </li>
-                        </ul>
-                    </article>
+    <!-- TUTORIALS -->
+    <section class="section band band-tint" id="tutorials">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>Tutorials</h2>
+                <p>Hands-on tutorials and user guides for metabarcoding data analysis, formatting, and publishing.</p>
+            </div>
+
+            <div class="filter-row reveal" data-tutorial-filters>
+                <span class="filter-label" id="tutorial-topic-label">Topic</span>
+                <div class="filter-controls" role="group" aria-labelledby="tutorial-topic-label">
+                    <button class="filter-button active" type="button" data-topic="all" aria-pressed="true">All</button>
+                    <button class="filter-button" type="button" data-topic="bioinformatics" aria-pressed="false">Bioinformatics</button>
+                    <button class="filter-button" type="button" data-topic="data-analysis" aria-pressed="false">Data analysis</button>
+                    <button class="filter-button" type="button" data-topic="publishing" aria-pressed="false">Data publishing</button>
                 </div>
             </div>
 
-            <div class="tutorials-panel reveal" id="tutorials">
-                <h3>Tutorials</h3>
-                <p class="muted">Hands-on tutorials and user guides for metabarcoding data analysis, formatting, and publishing.</p>
-
-                <article class="tutorial-card">
+            <div class="tutorial-grid">
+                <article class="tutorial-card reveal" id="tutorial-ampliseq" data-topics="bioinformatics">
                     <span class="tutorial-kicker">Hands-on tutorial</span>
                     <strong>Analyse metabarcoding datasets with nf-core/ampliseq</strong>
                     <span>This tutorial was part of the nf-core/ampliseq workshop during SystBio.EU 2026 in Uppsala</span>
                     <p class="tutorial-related-event">
                     Related event:
-                    <a href="#event-nucleotide-sequence-search">Nucleotide sequence search</a>
+                    <a href="#event-biosyst-ampliseq">Get started with nf-core/ampliseq</a>
                     in the Events &amp; training section.
                     </p>
+                    <span class="tutorial-tags"><span class="tag">Bioinformatics</span></span>
                     <a class="resource-link" href="/smn_webpage/files/Tutorials/Workshop_nf_core_ampliseq.md" download
                        target="_blank" rel="noopener noreferrer">Open tutorial →</a>
                 </article>
 
-
-                <article class="tutorial-card">
+                <article class="tutorial-card reveal" id="tutorial-asv-r" data-topics="data-analysis">
                     <span class="tutorial-kicker">Hands-on tutorial</span>
                     <strong>Import and analyse ASV portal data with R</strong>
                     <span>This tutorial was part of SBDI Days 2026 in Stockholm.</span>
@@ -375,159 +601,230 @@
                     <a href="#event-edna-sbdi">Exploring eDNA in SBDI</a>
                     in the Events &amp; training section.
                     </p>
+                    <span class="tutorial-tags"><span class="tag">Data analysis</span></span>
                     <a class="resource-link" href="https://biodiversitydata-se.github.io/sbdi-days-eDNA/tutorial.html"
                        target="_blank" rel="noopener noreferrer">Open tutorial →</a>
                 </article>
 
-                <a class="tutorial-card" href="https://docs.gbif-test.org/mdt-user-guide/en/"
+                <a class="tutorial-card reveal" data-topics="publishing" href="https://docs.gbif-test.org/mdt-user-guide/en/"
                    target="_blank" rel="noopener noreferrer">
                     <span class="tutorial-kicker">GBIF user guide</span>
                     <strong>Metabarcoding Data Toolkit (MDT) - User Guide</strong>
                     <span>Learn to format OTU/BIOM metabarcoding datasets and publish interoperable Darwin Core Archives to GBIF, OBIS, or external repositories using publishing or conversion-only mode.</span>
+                    <span class="tutorial-tags"><span class="tag">Data publishing</span></span>
                     <span class="resource-link">Open tutorial →</span>
                 </a>
-
             </div>
-
-            <div class="dataset-highlights-panel reveal" id="dataset-highlights">
-                <div class="section-head section-head-compact">
-                    <h3>Dataset highlights</h3>
-                    <p>A space for dataset publishers to share a short introduction to their work, supported by a figure or visual summary.</p>
-                </div>
-                <figure class="dataset-figure-placeholder">
-                    <div class="dataset-figure-placeholder-inner">Figure placeholder</div>
-                    <figcaption>Dataset highlight coming soon.</figcaption>
-                </figure>
-            </div>
-
+            <p class="filter-empty" data-tutorial-empty hidden>No tutorials for this topic yet.</p>
         </div>
     </section>
 
-    <!-- EVENTS -->
-    <section class="section section-alt" id="events">
+    <!-- DATASET HIGHLIGHTS -->
+    <section class="section" id="dataset-highlights">
         <div class="container">
-            <div class="section-head reveal">
-                <h2>Events & Training</h2>
-                <p>Training sessions focused on biodiversity monitoring, methods, and data publishing.</p>
+            <div class="section-head title-bar--right reveal">
+                <h2>Dataset highlights</h2>
+                <p>A space for dataset publishers to share a short introduction to their work, supported by a figure or visual summary.</p>
             </div>
-
-            <div class="timeline">
-
-                <article class="event reveal" id="event-nucleotide-sequence-search">
-                    <div class="event-date">
-                        <span class="event-day">07 OCT</span>
-                        <span class="event-month">2026</span>
-                    </div>
-                    <div class="event-body">
-                        <h3>Nucleotide Sequence Search - Technical Support Hour for Nodes</h3>
-                        <p>Technical Support Hour • Open to anyone interested</p>
-                        <p class="event-meta-text"> GBIF Technical Support Hour • 16:00 • Zoom</p>
-                    </div>
-                    <div class="event-actions">
-                        <a class="btn btn-primary" href="https://us02web.zoom.us/meeting/register/7_3oIGfhR4K_VjncQ6hadA" target="_blank" rel="noopener noreferrer">Registration here</a>
-                        <a class="btn btn-primary" href="https://discourse.gbif.org/t/nucleotide-sequence-search-on-gbif-org-technical-support-hour-for-nodes/6443" target="_blank" rel="noopener noreferrer">Submit questions in advance</a>
-                    </div>
-                </article>
-
-                <article class="event reveal" id="event-biosyst-edna">
-                    <div class="event-date">
-                        <span class="event-day">18 AUG</span>
-                        <span class="event-month">2026</span>
-                    </div>
-                    <div class="event-body">
-                        <h3>Exploring eDNA in SBDI</h3>
-                        <p>Hands-on workshop on accessing, processing, and exploring eDNA metabarcoding data with SBDI resources and R.</p>
-                        <p class="event-meta-text">BioSyst Conference 2026 • 10:30–12:00 • Workshop</p>
-                    </div>
-                    <div class="event-actions">
-                        <a class="btn btn-primary" href="https://biodiversitydatalab.github.io/biosyst_workshops/edna.html" target="_blank" rel="noopener noreferrer">Register</a>
-                    </div>
-                </article>
-
-                <article class="event reveal" id="event-biosyst-ampliseq">
-                    <div class="event-date">
-                        <span class="event-day">18 AUG</span>
-                        <span class="event-month">2026</span>
-                    </div>
-                    <div class="event-body">
-                        <h3>Get started with nf-core/ampliseq</h3>
-                        <p>Practical introduction to DADA2 denoising and taxonomic annotation of amplicon reads with nf-core/ampliseq.</p>
-                        <p class="event-meta-text">BioSyst Conference 2026 • 13:00–14:30 • Workshop</p>
-                    </div>
-                    <div class="event-actions">
-                        <a class="btn btn-primary" href="https://biodiversitydatalab.github.io/biosyst_workshops/ampliseq.html" target="_blank" rel="noopener noreferrer">Register</a>
-                    </div>
-                </article>
-
-                <article class="event reveal" id="event-dna-intro">
-                    <div class="event-date">
-                        <span class="event-day">03 JUN</span>
-                        <span class="event-month">2026</span>
-                    </div>
-                    <div class="event-body">
-                        <h3>Introduction to DNA in biodiversity data - Technical Support Hour for Nodes</h3>
-                        <p>3 June 2026 at 16:00 CEST • Online</p>
-                        <p class="event-meta-text">Technical Support Hour • Open to anyone interested</p>
-                    </div>
-                    <div class="event-actions">
-                        <a class="btn btn-primary" href="https://us02web.zoom.us/meeting/register/bljMHla2QOu4emrh5gJg0w" target="_blank" rel="noopener noreferrer">Registration here</a>
-                        <a class="btn btn-primary" href="https://discourse.gbif.org/t/introduction-to-dna-in-biodiversity-data-technical-support-hour-for-nodes/6309" target="_blank" rel="noopener noreferrer">Submit questions in advance</a>
-                    </div>
-                </article>
-
-                <article class="event reveal" id="event-edna-sbdi">
-                    <div class="event-date">
-                        <span class="event-day">11 FEB</span>
-                        <span class="event-month">2026</span>
-                    </div>
-                    <div class="event-body">
-                        <h3>Exploring eDNA in SBDI</h3>
-                        <p>
-                            Training event held during SBDI Days 2026 in Stockholm.
-                            A related Hands-on tutorial is available in
-                            <a href="#tutorials">Resources</a>.
-                        </p>
-                        <p class="event-meta-text">SBDI Days 2026 • Stockholm • Training</p>
-                    </div>
-                    <div class="event-actions">
-                        <a class="btn btn-primary" href="https://biodiversitydata-se.github.io/sbdi-days-eDNA/" target="_blank" rel="noopener noreferrer">Event page</a>
-                    </div>
-                </article>
-            </div>
+            <figure class="dataset-figure-placeholder reveal">
+                <div class="dataset-figure-placeholder-inner">Figure placeholder</div>
+                <figcaption>Dataset highlight coming soon.</figcaption>
+            </figure>
         </div>
     </section>
+
+
+    <!-- ===================== JOIN US ===================== -->
 
     <!-- OPPORTUNITIES -->
-    <section class="section" id="opportunities">
+    <section class="section band band-tint" id="opportunities">
         <div class="container">
-            <div class="section-head reveal">
+            <div class="section-head title-bar--right reveal">
+                <span class="section-kicker">Join us</span>
                 <h2>Opportunities in metabarcoding</h2>
-                <p>Connect with the SMN network and find current opportunities in biodiversity genomics and genetic monitoring.</p>
+                <p>Current positions and opportunities in biodiversity genomics and genetic monitoring.</p>
             </div>
 
             <div class="opportunity-grid">
-                <article class="opportunity-card reveal">
-                    <span class="opportunity-kicker">Join the network</span>
-                    <h3>Share your work and interests</h3>
-                    <p>Join the Swedish Metabarcoding Network through our membership form.</p>
-                    <a class="btn btn-primary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Membership form</a>
-                </article>
-
                 <article class="opportunity-card reveal">
                     <span class="opportunity-kicker">Current job offer</span>
                     <h3>Postdoctoral researcher at the University of Gothenburg</h3>
                     <p>Work with marine genetic data and monitoring, and help link genetic monitoring data into SBDI and GBIF. Reference: PAR 2026/698.</p>
                     <a class="btn btn-primary" href="https://web103.reachmee.com/ext/I005/1035/job?site=7&lang=UK&validator=9b89bead79bb7258ad55c8d75228e5b7&job_id=41399" target="_blank" rel="noopener noreferrer">View the advert</a>
                 </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Call for contractors</span>
+                    <h3>GBIF seeks a contractor for molecular OTU clustering and target-gene classification services</h3>
+                    <p>This may be of interest to members of the network working with metabarcoding, eDNA and bioinformatics.</p>
+                    <a class="btn btn-primary" href="https://www.gbif.org/news/6DchNRkO4YWxR4pMVF776E/gbif-seeks-contractor-for-molecular-otu-clustering-and-target-gene-classification-services" target="_blank" rel="noopener noreferrer">Read the announcement</a>
+                </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Share with the network</span>
+                    <h3>Have an opportunity to share?</h3>
+                    <p>Positions, calls, or collaborations in metabarcoding — let us know and we will post them here.</p>
+                    <a class="btn btn-secondary" href="#contact">Contact us</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- NATIONAL MONITORING (placeholder) -->
+    <section class="section" id="monitoring">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>National biodiversity monitoring programmes</h2>
+                <p>Swedish monitoring programmes that use or are exploring DNA-based methods such as metabarcoding.</p>
+            </div>
+
+            <div class="placeholder-grid">
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Soil · SLU</span>
+                    <h3>Swedish Forest Soil Inventory</h3>
+                    <p>Long-term monitoring of forest soils at about 2,000 permanent plots across Sweden since 1983. Besides soil chemistry, DNA methods are used to determine fungal community composition.</p>
+                    <a class="btn btn-primary" href="https://www.slu.se/en/about-slu/organisation/departments/soil-environment/environmental-monitoring/swedish-forest-soil-inventory/" target="_blank" rel="noopener noreferrer">Visit website</a>
+                </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Soil · Upcoming</span>
+                    <h3>Agricultural Soil Inventory</h3>
+                    <p>An upcoming national inventory of agricultural soils, linked to the EU Soil Monitoring Law (in force since December 2025), which lists loss of soil biodiversity among the key soil threats.</p>
+                    <a class="btn btn-secondary" href="https://environment.ec.europa.eu/topics/soil-health/soil-monitoring-law_en" target="_blank" rel="noopener noreferrer">EU Soil Monitoring Law</a>
+                </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Freshwater</span>
+                    <h3>Freshwater diatom inventory</h3>
+                    <p>Diatoms are key indicators of freshwater quality. New DNA barcode reference data for Swedish freshwater diatoms (Kahlert et al. 2026) support metabarcoding-based assessments.</p>
+                    <a class="btn btn-secondary" href="https://mbmg.pensoft.net/article/186778/" target="_blank" rel="noopener noreferrer">Read the paper</a>
+                </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Marine</span>
+                    <h3>Invasive species monitoring in harbours</h3>
+                    <p>Monitoring of non-indigenous species in Swedish harbours. Contact: Matthias Obst. More information coming soon.</p>
+                </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Insects</span>
+                    <h3>Swedish Insect Monitoring Scheme (SIMS)</h3>
+                    <p>Monitors insects at Swedish monitoring sites using Malaise traps and DNA metabarcoding (running until 2027). Run jointly by NRM, SLU, KTH, Stockholm University and Station Linné.</p>
+                    <a class="btn btn-primary" href="https://www.stationlinne.se/sv/forskning-research/swedish-insect-monitoring-scheme-sims/" target="_blank" rel="noopener noreferrer">Visit website</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- NETWORKS WORLDWIDE (placeholder) -->
+    <section class="section band band-tint" id="networks">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>Metabarcoding networks worldwide</h2>
+                <p>Metabarcoding and eDNA communities and networks in other countries.</p>
+            </div>
+
+            <div class="placeholder-grid">
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Finland</span>
+                    <h3>National eDNA idea group</h3>
+                    <p>Coordinated by the Finnish Environment Institute (Syke) since 2020, the group shares information on molecular monitoring methods, projects and events among more than 110 research institutions, universities and companies.</p>
+                    <p class="network-contact">Contact: Tiina Laamanen, <a href="mailto:tiina.laamanen@syke.fi">tiina.laamanen@syke.fi</a></p>
+                    <a class="btn btn-primary" href="https://luontotieto.syke.fi/en/front-page/monitoring-and-methods/nature-monitoring-methods/edna-and-other-monitoring-methods-based-on-molecular-biology/#welcome-to-the-national-eDNA-idea-group" target="_blank" rel="noopener noreferrer">Visit website</a>
+                </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Netherlands</span>
+                    <h3>Dutch National eDNA initiative</h3>
+                    <p>National initiative bringing together eDNA expertise in the Netherlands. More information coming soon.</p>
+                    <p class="network-contact">Contact: Henrik Cornelisson van de Ven</p>
+                </article>
+
+                <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">International</span>
+                    <h3>International eDNA Standardization Task Force (iESTF)</h3>
+                    <p>Brings together researchers, policymakers, industry partners and standards bodies to advance consistent, high-quality eDNA methods for biodiversity monitoring and environmental assessment.</p>
+                    <a class="btn btn-primary" href="https://iestf.global/" target="_blank" rel="noopener noreferrer">Visit website</a>
+                </article>
+            </div>
+
+            <h3 class="subsection-title reveal">More eDNA networks around the world</h3>
+            <div class="network-directory reveal">
+                <div class="network-region">
+                    <h4>Europe</h4>
+                    <ul>
+                        <li><a href="https://dnaqua.net" target="_blank" rel="noopener noreferrer">DNAqua-Net</a><span>Genomic tools for biodiversity assessment and biomonitoring of European water bodies</span></li>
+                        <li><a href="http://lofresh.bangor.ac.uk/index.php.en" target="_blank" rel="noopener noreferrer">LOFRESH</a><span>UK · eDNA for tracking species presence and abundance in and around freshwater habitats</span></li>
+                        <li><a href="https://www.ukeof.org.uk/our-work/ukdna" target="_blank" rel="noopener noreferrer">UK DNA</a><span>UK · connects eDNA researchers and end users within the UK Environmental Observation Framework</span></li>
+                    </ul>
+                </div>
+                <div class="network-region">
+                    <h4>Asia-Pacific</h4>
+                    <ul>
+                        <li><a href="https://www.sednasociety.com/" target="_blank" rel="noopener noreferrer">Southern eDNA Society</a><span>Australia &amp; New Zealand · science–industry collaboration for best-practice eDNA methods</span></li>
+                        <li><a href="https://www.ecodna.org.au" target="_blank" rel="noopener noreferrer">EcoDNA</a><span>Australia &amp; Asia-Pacific · eDNA applications in biodiversity conservation</span></li>
+                        <li><a href="https://ednasociety.org/en/" target="_blank" rel="noopener noreferrer">The eDNA Society</a><span>Japan · fostering eDNA science as a discipline</span></li>
+                    </ul>
+                </div>
+                <div class="network-region">
+                    <h4>North America</h4>
+                    <ul>
+                        <li><a href="https://gen-fish.ca" target="_blank" rel="noopener noreferrer">GEN-FISH</a><span>Canada · location and abundance of Canada's 200+ freshwater fish species</span></li>
+                        <li><a href="https://umaine.edu/edna/" target="_blank" rel="noopener noreferrer">Maine-eDNA</a><span>Maine, USA · research, education and outreach on coastal ecosystems</span></li>
+                        <li><a href="https://experience.arcgis.com/experience/db3a30220d0d4bdea684781cdaef5230/page/Home/" target="_blank" rel="noopener noreferrer">SeMMAP</a><span>California, USA · citizen science in the surface water monitoring program</span></li>
+                        <li><a href="mailto:Gedwg.edna@gmail.com">Government eDNA Working Group (GEDWG)</a><span>USA · no-cost consortium of government and non-government agencies interested in eDNA</span></li>
+                    </ul>
+                </div>
+                <div class="network-region">
+                    <h4>Global</h4>
+                    <ul>
+                        <li><a href="https://www.obon-ocean.org" target="_blank" rel="noopener noreferrer">OBON</a><span>Ocean Biomolecular Observing Network, UN Ocean Decade programme</span></li>
+                        <li><a href="https://geobon.org/bons/thematic-bon/mbon/" target="_blank" rel="noopener noreferrer">MBON</a><span>Marine Biodiversity Observation Network within GEO BON</span></li>
+                        <li><a href="https://www.unesco.org/en/edna-expeditions" target="_blank" rel="noopener noreferrer">UNESCO eDNA Expeditions</a><span>Citizen science measuring marine biodiversity across World Heritage marine sites</span></li>
+                        <li><a href="https://www.vigilife.org" target="_blank" rel="noopener noreferrer">Vigilife Observatory</a><span>Global ecosystem monitoring networks built on regional scientific programmes</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="network-source reveal">
+                Compiled from the network map of the
+                <a href="https://www.ednacollab.org/" target="_blank" rel="noopener noreferrer">eDNA Collaborative</a>.
+                Know a network we should add? <a href="#contact">Let us know</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- HOW WE CAN HELP & MEMBERSHIP -->
+    <section class="section" id="join">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>Join our community</h2>
+                <p>Whether you have metabarcoding data or are new to the field, you're welcome to participate.</p>
+            </div>
+
+            <div class="join-cards">
+                <article class="help-card help-card--highlight reveal">
+                    <h3>Sign up for our newsletter</h3>
+                    <p>Hear about events, trainings, new resources and opportunities in metabarcoding. It's free and comes with no obligations.</p>
+                    <a class="btn btn-primary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Join our community</a>
+                </article>
+                <article class="help-card reveal">
+                    <h3>Get free help from a data steward with uploading your ASV/OTU data</h3>
+                    <a class="btn btn-primary" href="#contact">Request help</a>
+                </article>
+                <article class="help-card reveal">
+                    <h3>Help us getting an overview</h3>
+                    <p>If you produce metabarcoding data and are interested in making them FAIR, fill out this short survey.</p>
+                    <a class="btn btn-secondary" href="https://forms.microsoft.com/e/UGTTGuYtAT" target="_blank" rel="noopener noreferrer">Survey</a>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="section" id="contact">
+    <section class="section band band-tint" id="contact">
         <div class="container">
-            <div class="section-head reveal">
-                <h2>Contact</h2>
+            <div class="section-head title-bar--right reveal">
+                <h2>Contact &amp; partners</h2>
             </div>
 
             <div class="contact-grid">
@@ -537,34 +834,6 @@
                         <p class="contact-line">
                             <span aria-hidden="true">✉️</span>
                             <a href="mailto:smn-members@lists.uu.se">smn-members@lists.uu.se</a>
-                        </p>
-                    </div>
-
-                    <div class="contact-card reveal partner-card">
-                        <h3>Partner</h3>
-                        <p class="contact-line">
-                            <a class="partner-link" href="https://www.biodiversity.se/" target="_blank" rel="noopener noreferrer">Biodiversity Data Lab</a>
-                        </p>
-                        <p class="contact-line">
-                            <a class="partner-link" href="https://www.gbif.se/" target="_blank" rel="noopener noreferrer">GBIF Sweden - Global Biodiversity Information Facility</a>
-                        </p>
-                         <p class="contact-line">
-                            <a class="partner-link" href="https://envgen.github.io/" target="_blank" rel="noopener noreferrer" data-logo-url="files/Partner Logos/logga_env_genomics.png">KTH Environmental Genomics</a>
-                        </p>
-                        <p class="contact-line">
-                            <a class="partner-link" href="http://www.norbaf.net/participants/index.html" target="_blank" rel="noopener noreferrer">Nordic-Baltic Network for Benthic Algae in Freshwater</a>
-                        </p>
-                        <p class="contact-line">
-                            <a class="partner-link" href="https://www.nrm.se/" target="_blank" rel="noopener noreferrer" data-logo-url="https://www.nrm.se/favicon-32x32.png">NRM - Naturhistoriska Rikmuseet</a>
-                        </p>
-                        <p class="contact-line">
-                            <a class="partner-link" href="https://biodiversitydata.se/" target="_blank" rel="noopener noreferrer">SBDI - Swedish Biodiversity Data Infrastructure</a>
-                        </p>
-                        <p class="contact-line">
-                            <a class="partner-link" href="https://www.scilifelab.se/" target="_blank" rel="noopener noreferrer">SciLifeLab</a>
-                        </p>
-                        <p class="contact-line">
-                            <a class="partner-link" href="https://www.slu.se/en/research/research-catalogue/grupper/d/division-of-microbial-ecology/" target="_blank" rel="noopener noreferrer">SLU Microbial Ecology</a>
                         </p>
                     </div>
                 </div>
@@ -592,6 +861,20 @@
                     <p class="form-note" id="formNote" aria-live="polite"></p>
                 </form>
             </div>
+
+            <div class="partner-strip reveal">
+                <h3>Partners</h3>
+                <div class="partner-logos">
+                    <a class="partner-link" href="https://www.biodiversity.se/" target="_blank" rel="noopener noreferrer">Biodiversity Data Lab</a>
+                    <a class="partner-link" href="https://www.gbif.se/" target="_blank" rel="noopener noreferrer">GBIF Sweden - Global Biodiversity Information Facility</a>
+                    <a class="partner-link" href="https://envgen.github.io/" target="_blank" rel="noopener noreferrer" data-logo-url="files/Partner Logos/logga_env_genomics.png">KTH Environmental Genomics</a>
+                    <a class="partner-link" href="http://www.norbaf.net/participants/index.html" target="_blank" rel="noopener noreferrer">Nordic-Baltic Network for Benthic Algae in Freshwater</a>
+                    <a class="partner-link" href="https://www.nrm.se/" target="_blank" rel="noopener noreferrer" data-logo-url="https://www.nrm.se/favicon-32x32.png">NRM - Naturhistoriska Rikmuseet</a>
+                    <a class="partner-link" href="https://biodiversitydata.se/" target="_blank" rel="noopener noreferrer">SBDI - Swedish Biodiversity Data Infrastructure</a>
+                    <a class="partner-link" href="https://www.scilifelab.se/" target="_blank" rel="noopener noreferrer">SciLifeLab</a>
+                    <a class="partner-link" href="https://www.slu.se/en/research/research-catalogue/grupper/d/division-of-microbial-ecology/" target="_blank" rel="noopener noreferrer">SLU Microbial Ecology</a>
+                </div>
+            </div>
         </div>
     </section>
 </main>
@@ -600,9 +883,7 @@
     <div class="container footer-inner">
         <div class="footer-left">
             <div class="brand small">
-                <span class="brand-mark" aria-hidden="true">
-                    <img class="brand-logo-image brand-logo-image--footer" src="files/smn_logo_boreal.png" alt="">
-                </span>
+                <img class="footer-logo" src="files/smn_logo_boreal.png" alt="" aria-hidden="true">
                 <span class="brand-text">
             <span class="brand-title">Swedish Metabarcoding Network</span>
             <span class="brand-subtitle">Research Data Community Project funded by SciLifeLab</span>

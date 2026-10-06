@@ -1,5 +1,5 @@
 /* Swedish Metabarcoding Network landing page JS
-  - mobile nav toggle
+  - navigation: dropdown groups, mobile menu, sticky mini logo
   - theme toggle (persists in localStorage)
   - partner logo auto-loader from link domains
   - reveal-on-scroll animations
@@ -14,8 +14,7 @@
 
   // ---------- Theme ----------
   const THEME_KEY = "smn_theme";
-  const themeToggle = document.querySelector(".theme-toggle");
-  const themeIcon = document.querySelector(".theme-icon");
+  const themeToggles = Array.from(document.querySelectorAll(".theme-toggle"));
 
   function setTheme(theme) {
     if (theme === "light") root.setAttribute("data-theme", "light");
@@ -32,56 +31,99 @@
   }
 
   function updateThemeToggleIcon(theme) {
-    if (!themeIcon || !themeToggle) return;
     const isLight = theme === "light";
-    themeIcon.textContent = isLight ? "🌙" : "☀";
-    themeToggle.setAttribute("data-icon", isLight ? "moon" : "sun");
-    themeToggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
-    themeToggle.setAttribute("title", isLight ? "Switch to dark mode" : "Switch to light mode");
+    themeToggles.forEach((toggle) => {
+      const icon = toggle.querySelector(".theme-icon");
+      if (icon) icon.textContent = isLight ? "🌙" : "☀";
+      toggle.setAttribute("data-icon", isLight ? "moon" : "sun");
+      toggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+      toggle.setAttribute("title", isLight ? "Switch to dark mode" : "Switch to light mode");
+    });
   }
 
   setTheme(getPreferredTheme());
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
+  themeToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
       const isLight = root.getAttribute("data-theme") === "light";
       setTheme(isLight ? "dark" : "light");
     });
-  }
+  });
 
-  // ---------- Mobile nav ----------
+  // ---------- Navigation (mobile menu + dropdowns) ----------
   const navToggle = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector(".nav-menu");
-  const navLinks = document.querySelectorAll(".nav-link");
+  const navGroups = Array.from(document.querySelectorAll(".nav-group"));
+  const navLinks = document.querySelectorAll(".nav-menu a, .nav-cta");
+
+  function setGroupOpen(group, open) {
+    group.classList.toggle("is-open", open);
+    const toggle = group.querySelector(".nav-group-toggle");
+    if (toggle) toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  function closeGroups(except) {
+    navGroups.forEach((group) => {
+      if (group !== except) setGroupOpen(group, false);
+    });
+  }
 
   function closeMenu() {
+    closeGroups();
     if (!navMenu || !navToggle) return;
     navMenu.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Open menu");
   }
+
+  navGroups.forEach((group) => {
+    const toggle = group.querySelector(".nav-group-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", () => {
+      const willOpen = !group.classList.contains("is-open");
+      closeGroups(group);
+      setGroupOpen(group, willOpen);
+    });
+  });
 
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
       const isOpen = navMenu.classList.toggle("open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
       navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      if (!isOpen) closeGroups();
     });
+  }
 
-    // Close menu when clicking a link
-    navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+  // Close menu when clicking a link
+  navLinks.forEach((link) => link.addEventListener("click", () => {
+    closeMenu();
+    // drop focus so the :hover/:focus dropdown doesn't stay visible after jumping
+    if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+  }));
 
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      const target = e.target;
-      if (!target) return;
-      const clickedInside = navMenu.contains(target) || navToggle.contains(target);
-      if (!clickedInside) closeMenu();
-    });
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!target || !navMenu) return;
+    const clickedInside = navMenu.contains(target) || (navToggle && navToggle.contains(target));
+    if (!clickedInside) closeMenu();
+  });
 
-    // Close on escape
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
+  // Close on escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  // Show the small logo in the nav bar once the big header logo has scrolled away
+  const siteHeader = document.querySelector(".site-header");
+  const siteNav = document.querySelector(".site-nav");
+  if (siteHeader && siteNav && "IntersectionObserver" in window) {
+    const stuckObserver = new IntersectionObserver(
+      ([entry]) => siteNav.classList.toggle("is-stuck", !entry.isIntersecting),
+      { threshold: 0 }
+    );
+    stuckObserver.observe(siteHeader);
   }
 
   // ---------- Partner logos from partner links ----------
@@ -190,6 +232,81 @@
   );
 
   reveals.forEach((el) => revealObserver.observe(el));
+
+  // ---------- Side navigation: highlight the section currently in view ----------
+  const sideLinks = Array.from(document.querySelectorAll(".side-nav-link"));
+  const spySections = sideLinks
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  function updateSideNav() {
+    const line = window.innerHeight * 0.35;
+    let current = spySections[0];
+    spySections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= line) current = section;
+    });
+    sideLinks.forEach((link) => {
+      const active = link.getAttribute("href") === `#${current.id}`;
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+    document.querySelectorAll(".side-nav-group").forEach((group) => {
+      group.classList.toggle("is-current", !!group.querySelector(".side-nav-link.is-active"));
+    });
+  }
+
+  if (spySections.length) {
+    let spyQueued = false;
+    window.addEventListener("scroll", () => {
+      if (spyQueued) return;
+      spyQueued = true;
+      requestAnimationFrame(() => {
+        spyQueued = false;
+        updateSideNav();
+      });
+    }, { passive: true });
+    window.addEventListener("resize", updateSideNav);
+    updateSideNav();
+  }
+
+  // ---------- Events: mark past / upcoming from data-date (YYYY-MM-DD) ----------
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+  document.querySelectorAll(".event[data-date]").forEach((eventEl) => {
+    const [y, m, d] = eventEl.dataset.date.split("-").map(Number);
+    if (!y || !m || !d) return;
+    const isPast = new Date(y, m - 1, d) < startOfToday;
+    eventEl.classList.add(isPast ? "event--past" : "event--upcoming");
+  });
+
+  // ---------- Tutorial topic filter ----------
+  const tutorialFilters = document.querySelector("[data-tutorial-filters]");
+  if (tutorialFilters) {
+    const filterButtons = Array.from(tutorialFilters.querySelectorAll(".filter-button"));
+    const tutorialCards = Array.from(document.querySelectorAll(".tutorial-card[data-topics]"));
+    const emptyNote = document.querySelector("[data-tutorial-empty]");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const topic = button.dataset.topic;
+        filterButtons.forEach((b) => {
+          const isActive = b === button;
+          b.classList.toggle("active", isActive);
+          b.setAttribute("aria-pressed", String(isActive));
+        });
+
+        let visible = 0;
+        tutorialCards.forEach((card) => {
+          const topics = (card.dataset.topics || "").split(/\s+/);
+          const show = topic === "all" || topics.includes(topic);
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        if (emptyNote) emptyNote.hidden = visible > 0;
+      });
+    });
+  }
 
   // ---------- Animated counters ----------
   const counters = Array.from(document.querySelectorAll("[data-count-to]"));
