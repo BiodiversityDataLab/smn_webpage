@@ -467,12 +467,6 @@ p{ line-height:1.55; }
 .mission-body--single{ grid-template-columns: minmax(0, 72ch); }
 
 .mission-head h2{ margin-bottom: 0; }
-/* next to the hero photo: bar runs from the left edge to the end of the text column */
-.mission-head.title-bar--right h2::before{
-  right: 0;
-  width: auto;
-  border-radius: 10px;
-}
 .hero h1{
   margin: 16px 0 12px;
   font-size: clamp(34px, 4.2vw, 54px);
@@ -496,7 +490,8 @@ p{ line-height:1.55; }
   align-content: start;
 }
 .hero-photo{
-  margin: 8px 0 0;
+  /* top aligned with the h1 below the full-width mission bar */
+  margin: 16px 0 0;
   flex: 0 0 270px;
   width: 270px;
   align-self: start;
