@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Swedish Metabarcoding Network//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:edna-workshop-2026-10-23@metabarcoding.se
+DTSTAMP:20261009T000000Z
+DTSTART:20261023T130000Z
+DTEND:20261023T140000Z
+SUMMARY:eDNA workshop: Swedish Metabarcoding Network
+DESCRIPTION:Introduction to the Swedish Metabarcoding Network and a demo o
+ n how to mobilise eDNA-derived metabarcoding data on SBDI/GBIF as occurre
+ nce data. Also covers free NBIS support for uploading eDNA data to ENA an
+ d GBIF.\n\nHybrid: Uppsala University or online via Zoom.\nJoin on Zoom:
+ https://uu-se.zoom.us/j/2206467488\n\nhttps://metabarcoding.se/
+LOCATION:Uppsala University / Zoom: https://uu-se.zoom.us/j/2206467488
+URL:https://uu-se.zoom.us/j/2206467488
+END:VEVENT
+END:VCALENDAR
