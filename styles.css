@@ -978,6 +978,36 @@ section[id],
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
+.join-cards--two{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.newsletter-signup{ max-width: 560px; }
+
+/* ---------- Announcement banner (between hero and About) ---------- */
+.announce-banner{
+  display:flex;
+  align-items:center;
+  gap: 16px;
+  margin: 0 0 var(--section-space);
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  border: 2px solid var(--gold);
+  background: rgba(227,181,82,0.10);
+  box-shadow: 0 0 0 4px rgba(227,181,82,0.12), var(--shadow-soft);
+}
+.announce-kicker{
+  flex: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #13301f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+[data-theme="light"] .announce-kicker{ color: #fff; }
+.announce-text{ margin: 0; flex: 1; }
+.announce-banner .btn{ flex: none; }
+
 .help-card--highlight{
   border: 2px solid var(--gold);
   box-shadow: 0 0 0 4px rgba(227,181,82,0.12), var(--shadow-soft);
@@ -1322,6 +1352,28 @@ section[id],
 .event-actions{ display:flex; justify-content:flex-end; flex-wrap: wrap; gap: 8px; }
 .event-actions .btn{ white-space: nowrap; }
 
+/* collapsible programme inside an event */
+.event:has(.event-programme[open]){ align-items: start; }
+.event-programme{
+  margin-top: 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.event-programme summary{
+  padding: 10px 14px;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--gold);
+  cursor: pointer;
+}
+.event-programme summary:focus-visible{ outline: none; box-shadow: var(--focus); border-radius: 12px; }
+.event-programme-body{ padding: 0 14px 6px; }
+.event-programme-body h4{ margin: 12px 0 4px; font-size: 15px; }
+.event-programme-body ul{ margin: 0 0 10px; padding-left: 20px; color: var(--muted); }
+.event-programme-body li{ margin-bottom: 2px; }
+.event-programme-note{ margin: 0 0 2px !important; font-style: italic; font-size: 14px; }
+
 /* ---------- Opportunities ---------- */
 .opportunity-grid{
   display: grid;
@@ -1589,6 +1641,7 @@ input:focus, textarea:focus{ box-shadow: var(--focus); }
   .network-directory{ grid-template-columns: 1fr; }
   .help-grid{ grid-template-columns: 1fr; }
   .join-cards{ grid-template-columns: 1fr; }
+  .announce-banner{ flex-direction: column; align-items: flex-start; gap: 10px; }
   .partner-logos{ grid-template-columns: 1fr; }
   .contribute-item{
     grid-template-columns: 1fr;

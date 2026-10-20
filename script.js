@@ -280,6 +280,14 @@
     eventEl.classList.add(isPast ? "event--past" : "event--upcoming");
   });
 
+  // ---------- Announcement banner: open the linked event's programme ----------
+  document.querySelectorAll("[data-open-programme]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const programme = document.querySelector(`${link.getAttribute("href")} .event-programme`);
+      if (programme) programme.open = true;
+    });
+  });
+
   // ---------- Tutorial topic filter ----------
   const tutorialFilters = document.querySelector("[data-tutorial-filters]");
   if (tutorialFilters) {
