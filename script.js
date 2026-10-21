@@ -4,6 +4,7 @@
   - partner logo auto-loader from link domains
   - reveal-on-scroll animations
   - animated counters
+  - workflow arrows (ASV Portal / ENA branch)
   - contact form direct-send handler
 */
 
@@ -402,5 +403,89 @@
 
     return false;
   };
+
+  // ---------- Workflow arrows (wide screens): 4 -> 6b ENA, 6a ASV Portal + 6b ENA merge -> 7 FAIR ----------
+  const workflow = document.querySelector("[data-workflow]");
+  if (workflow) {
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const wideQuery = window.matchMedia("(min-width: 1101px)");
+    const svg = document.createElementNS(SVG_NS, "svg");
+    svg.setAttribute("class", "workflow-arrows");
+    svg.setAttribute("aria-hidden", "true");
+    workflow.appendChild(svg);
+
+    // layout position relative to the workflow (offsets ignore the reveal transforms)
+    const box = (el) => {
+      let x = 0;
+      let y = 0;
+      let node = el;
+      while (node && node !== workflow) {
+        x += node.offsetLeft;
+        y += node.offsetTop;
+        node = node.offsetParent;
+      }
+      return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+    };
+
+    // small filled triangle at (x, y) pointing right (angle 0) or up (-PI/2)
+    const arrowHead = (x, y, angle) => {
+      const size = 9;
+      const a1 = angle + Math.PI * 0.82;
+      const a2 = angle - Math.PI * 0.82;
+      return `M${x},${y} L${x + size * Math.cos(a1)},${y + size * Math.sin(a1)} L${x + size * Math.cos(a2)},${y + size * Math.sin(a2)} Z`;
+    };
+
+    const addPath = (d, head) => {
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("d", d);
+      svg.append(path);
+      if (!head) return;
+      const tip = document.createElementNS(SVG_NS, "path");
+      tip.setAttribute("class", "workflow-arrows-head");
+      tip.setAttribute("d", head);
+      svg.append(tip);
+    };
+
+    const draw = () => {
+      svg.replaceChildren();
+      if (!wideQuery.matches) return;
+      const seqEl = workflow.querySelector(".workflow-step--fork");
+      const enaEl = workflow.querySelector(".workflow-step--ena .workflow-figure");
+      const fairEl = workflow.querySelector(".workflow-step--fair .workflow-figure");
+      const asvEl = workflow.querySelector(".workflow-step--asv .workflow-figure");
+      if (!seqEl || !enaEl || !fairEl || !asvEl) return;
+
+      const s = box(seqEl);
+      const e = box(enaEl);
+      const f = box(fairEl);
+      const r = 16;
+      const gap = 10;
+
+      // sequencing: down from below its text, then right (below step 5) into ENA
+      const sx = s.x + s.w * 0.5;
+      const sy = s.y + s.h + gap;
+      const ey = e.y + e.h * 0.5;
+      const ex = e.x - gap;
+      addPath(`M${sx},${sy} L${sx},${ey - r} Q${sx},${ey} ${sx + r},${ey} L${ex - 2},${ey}`,
+        arrowHead(ex + 2, ey, 0));
+
+      // ASV Portal and ENA merge in the narrow column before FAIR, then one arrow leads into FAIR
+      const p = box(asvEl);
+      const my = p.y + p.h * 0.5;
+      const mx = (p.x + p.w + f.x) / 2;
+      const fx = f.x - gap;
+      const ox = e.x + e.w + gap;
+      const oy = e.y + e.h * 0.5;
+      addPath(`M${p.x + p.w + gap},${my} L${fx - 2},${my}`, arrowHead(fx + 2, my, 0));
+      addPath(`M${ox},${oy} L${mx - r},${oy} Q${mx},${oy} ${mx},${oy - r} L${mx},${my + r} Q${mx},${my} ${mx + r},${my}`, "");
+    };
+
+    draw();
+    window.addEventListener("load", draw);
+    wideQuery.addEventListener("change", draw);
+    if ("ResizeObserver" in window) new ResizeObserver(draw).observe(workflow);
+    else window.addEventListener("resize", draw);
+    workflow.querySelectorAll("img").forEach((img) => img.addEventListener("load", draw));
+  }
 
 })();

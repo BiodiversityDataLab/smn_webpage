@@ -63,6 +63,7 @@
                     <a class="nav-sublink" href="#protocols">Protocols</a>
                     <a class="nav-sublink" href="#tutorials">Tutorials</a>
                     <a class="nav-sublink" href="#dataset-highlights">Dataset highlights</a>
+                    <a class="nav-sublink" href="#publications">Publications</a>
                 </div>
             </div>
 
@@ -109,6 +110,7 @@
         <a class="side-nav-link" href="#protocols"><span>Protocols</span></a>
         <a class="side-nav-link" href="#tutorials"><span>Tutorials</span></a>
         <a class="side-nav-link" href="#dataset-highlights"><span>Dataset highlights</span></a>
+        <a class="side-nav-link" href="#publications"><span>Publications</span></a>
     </div>
     <div class="side-nav-group" data-group="join">
         <span class="side-nav-topic">Join us</span>
@@ -163,7 +165,7 @@
                         <div class="cta-row" aria-label="Quick navigation">
                             <a class="btn btn-secondary" href="#metabarcoding">What is metabarcoding?</a>
                             <a class="btn btn-primary" href="#asv-uploading">Share your data via the ASV portal</a>
-                            <a class="btn btn-secondary" href="#newsletter">Join the network</a>
+                            <a class="btn btn-secondary" href="#email-list">Join the network</a>
                         </div>
                     </div>
                     <figure class="hero-photo" aria-label="eDNA biodiversity data collection at field site">
@@ -173,8 +175,8 @@
 
                 <div class="mini-stats" role="list" aria-label="Highlights">
                     <div class="stat-card" role="listitem">
-                        <div class="stat-number" data-count-to="44">0</div>
-                        <div class="stat-label">Subscribed research groups</div>
+                        <div class="stat-number" data-count-to="69">0</div>
+                        <div class="stat-label">Members on our email list</div>
                     </div>
                     <div class="stat-card" role="listitem">
                         <div class="stat-number" data-count-to="21">0</div>
@@ -249,11 +251,13 @@
                 <h2>What is metabarcoding?</h2>
                 <p>
                     Metabarcoding identifies many organisms at once from the DNA contained in environmental or bulk
-                    samples. These seven steps take a sample from the field to FAIR biodiversity data.
+                    samples. These steps take a sample from the field to FAIR biodiversity data. After sequencing, the
+                    workflow splits: processed ASVs go to the ASV Portal, raw reads go to ENA. The two complement each
+                    other and together make your data FAIR.
                 </p>
             </div>
 
-            <ol class="workflow">
+            <ol class="workflow" data-workflow>
                 <li class="workflow-step reveal" style="--step-color: #2f7d32;">
                     <div class="workflow-head">
                         <span class="workflow-number">1</span>
@@ -278,7 +282,7 @@
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/3-pcr-library-prep.jpg" alt="" loading="lazy"></div>
                     <p>Amplify target markers with PCR and prepare indexed libraries for sequencing.</p>
                 </li>
-                <li class="workflow-step reveal" style="--step-color: #2266b0;">
+                <li class="workflow-step workflow-step--fork reveal" style="--step-color: #2266b0;">
                     <div class="workflow-head">
                         <span class="workflow-number">4</span>
                         <h3>Sequencing</h3>
@@ -286,7 +290,7 @@
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/4-sequencing.jpg" alt="" loading="lazy"></div>
                     <p>Sequence the libraries using high-throughput sequencing technologies.</p>
                 </li>
-                <li class="workflow-step reveal" style="--step-color: #1d4f91;">
+                <li class="workflow-step workflow-step--analysis reveal" style="--step-color: #1d4f91;">
                     <div class="workflow-head">
                         <span class="workflow-number">5</span>
                         <h3>Bioinformatics analysis</h3>
@@ -294,22 +298,32 @@
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/5-bioinformatics.jpg" alt="" loading="lazy"></div>
                     <p>Process sequences, derive ASVs, assign taxonomy and create taxonomy tables.</p>
                 </li>
-                <li class="workflow-step workflow-step--highlight reveal" style="--step-color: #2a6f97;">
+                <li class="workflow-step workflow-step--highlight workflow-step--asv reveal" style="--step-color: #2a6f97;">
                     <div class="workflow-head">
-                        <span class="workflow-number">6</span>
+                        <span class="workflow-number">6a</span>
                         <h3>ASV portal</h3>
                     </div>
-                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/6-asv-portal.jpg" alt="" loading="lazy"></div>
-                    <p>Upload your ASV data to the ASV Portal for curation, annotation, long-term storage and public access in SBDI and GBIF.</p>
+                    <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/6a-asv-portal-logo.jpg" alt="ASV Portal logo" loading="lazy"></div>
+                    <p>Upload your ASVs for curation, annotation and public access in SBDI and GBIF.</p>
                     <a class="workflow-link" href="#asv-uploading">How to upload →</a>
                 </li>
-                <li class="workflow-step reveal" style="--step-color: #c98a1b;">
+                <li class="workflow-step workflow-step--highlight workflow-step--ena reveal" style="--step-color: #2a6f97;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">6b</span>
+                        <h3>ENA</h3>
+                    </div>
+                    <div class="workflow-figure"><a href="https://www.ebi.ac.uk/ena/browser/home" target="_blank" rel="noopener noreferrer"><img class="workflow-image" src="files/Workflow/6b-ena.jpg" alt="European Nucleotide Archive (ENA)" loading="lazy"></a></div>
+                    <p>Archive your raw reads and metadata in the European Nucleotide Archive.</p>
+                    <a class="workflow-link" href="https://www.ebi.ac.uk/ena/browser/home" target="_blank" rel="noopener noreferrer">Open ENA →</a>
+                    <a class="workflow-link" href="https://nbis.se/services/data-submission-support/apply" target="_blank" rel="noopener noreferrer">Get NBIS data support →</a>
+                </li>
+                <li class="workflow-step workflow-step--fair reveal" style="--step-color: #c98a1b;">
                     <div class="workflow-head">
                         <span class="workflow-number">7</span>
-                        <h3>FAIR biodiversity data</h3>
+                        <h3>FAIR data</h3>
                     </div>
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/7-fair-data.jpg" alt="" loading="lazy"></div>
-                    <p>FAIR data are discoverable, accessible and reusable for research, monitoring and decision-making.</p>
+                    <p><strong>ASV Portal + ENA</strong> together make your data FAIR: discoverable, accessible and reusable.</p>
                 </li>
             </ol>
         </div>
@@ -369,7 +383,7 @@
                                 Download slides from the video
                             </a>
 
-                            <a class="btn btn-primary btn-wide" href="#contact">Request free help from a data steward</a>
+                            <a class="btn btn-primary btn-wide" href="https://nbis.se/services/data-submission-support/apply" target="_blank" rel="noopener noreferrer">Get free data support from NBIS</a>
                         </div>
                     </div>
                 </div>
@@ -427,7 +441,7 @@
                         </details>
                     </div>
                     <div class="event-actions">
-                        <a class="btn btn-primary" href="#newsletter">Get notified</a>
+                        <a class="btn btn-primary" href="#email-list">Get notified</a>
                     </div>
                 </article>
 
@@ -529,6 +543,12 @@
                         <a class="btn btn-primary" href="https://biodiversitydata-se.github.io/sbdi-days-eDNA/" target="_blank" rel="noopener noreferrer">Event page</a>
                     </div>
                 </article>
+            </div>
+
+            <div class="announce-banner training-banner reveal">
+                <span class="announce-kicker">More training</span>
+                <p class="announce-text">Looking for courses in metabarcoding? Biodiversity Genomics Europe (BGE) lists its training courses, including metabarcoding and eDNA.</p>
+                <a class="btn btn-secondary" href="https://biodiversitygenomics.eu/training-overview/training/" target="_blank" rel="noopener noreferrer">BGE training courses</a>
             </div>
         </div>
     </section>
@@ -708,11 +728,36 @@
         </div>
     </section>
 
+    <!-- PUBLICATIONS: metabarcoding-related publications from the network, grouped by year (newest first) -->
+    <section class="section band band-tint" id="publications">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>Publications</h2>
+                <p>Metabarcoding and eDNA publications from members of our network.</p>
+            </div>
+
+            <h3 class="subsection-title pub-year reveal">2026</h3>
+            <ol class="pub-list">
+                <li class="pub-item reveal">
+                    <a class="pub-title" href="https://doi.org/10.64898/2026.09.13.750568" target="_blank" rel="noopener noreferrer">Environmental DNA substrates capture complementary dimensions of insect biodiversity</a>
+                    <span class="pub-authors">Beilun Zhao, John Sundh, Tobias Andermann</span>
+                    <span class="pub-meta"><em>bioRxiv</em> (preprint) · Sep 2026 · <a href="https://doi.org/10.64898/2026.09.13.750568" target="_blank" rel="noopener noreferrer">doi:10.64898/2026.09.13.750568</a></span>
+                </li>
+                <li class="pub-item reveal">
+                    <a class="pub-title" href="https://doi.org/10.1111/1755-0998.70096" target="_blank" rel="noopener noreferrer">Properties and Limitations of eDNA Substrates for Terrestrial Animal Monitoring</a>
+                    <span class="pub-authors">Beilun Zhao, Tobias Andermann</span>
+                    <span class="pub-meta"><em>Molecular Ecology Resources</em> 26(2): e70096 · Feb 2026 · <a href="https://doi.org/10.1111/1755-0998.70096" target="_blank" rel="noopener noreferrer">doi:10.1111/1755-0998.70096</a></span>
+                </li>
+            </ol>
+            <p class="network-source reveal">Published something on metabarcoding? <a href="#contact">Let us know</a> and we will add it.</p>
+        </div>
+    </section>
+
 
     <!-- ===================== JOIN US ===================== -->
 
     <!-- OPPORTUNITIES -->
-    <section class="section band band-tint" id="opportunities">
+    <section class="section" id="opportunities">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <span class="section-kicker">Join us</span>
@@ -748,7 +793,7 @@
     </section>
 
     <!-- NATIONAL MONITORING (placeholder) -->
-    <section class="section" id="monitoring">
+    <section class="section band band-tint" id="monitoring">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>National biodiversity monitoring programmes</h2>
@@ -794,7 +839,7 @@
     </section>
 
     <!-- NETWORKS WORLDWIDE (placeholder) -->
-    <section class="section band band-tint" id="networks">
+    <section class="section" id="networks">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Metabarcoding networks worldwide</h2>
@@ -831,6 +876,7 @@
                     <h4>Europe</h4>
                     <ul>
                         <li><a href="https://dnaqua.net" target="_blank" rel="noopener noreferrer">DNAqua-Net</a><span>Genomic tools for biodiversity assessment and biomonitoring of European water bodies</span></li>
+                        <li><a href="https://ednaeurope.org/news.html" target="_blank" rel="noopener noreferrer">eDNA Europe</a><span>Emerging European eDNA society, currently being founded · newsletter and community updates</span></li>
                         <li><a href="http://lofresh.bangor.ac.uk/index.php.en" target="_blank" rel="noopener noreferrer">LOFRESH</a><span>UK · eDNA for tracking species presence and abundance in and around freshwater habitats</span></li>
                         <li><a href="https://www.ukeof.org.uk/our-work/ukdna" target="_blank" rel="noopener noreferrer">UK DNA</a><span>UK · connects eDNA researchers and end users within the UK Environmental Observation Framework</span></li>
                     </ul>
@@ -871,17 +917,23 @@
     </section>
 
     <!-- HOW WE CAN HELP & MEMBERSHIP -->
-    <section class="section" id="join">
+    <section class="section band band-tint" id="join">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Join our community</h2>
                 <p>Whether you have metabarcoding data or are new to the field, you're welcome to participate.</p>
             </div>
 
-            <div class="join-cards join-cards--two">
+            <div class="join-cards">
+                <article class="help-card help-card--highlight reveal" id="email-list">
+                    <h3>Join our email list</h3>
+                    <p>Stay in touch with the network: invitations to events and workshops, news, opportunities and our newsletter. It's free and comes with no obligations.</p>
+                    <a class="btn btn-primary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Join the email list</a>
+                </article>
                 <article class="help-card reveal">
-                    <h3>Get free help from a data steward with uploading your ASV/OTU data</h3>
-                    <a class="btn btn-primary" href="#contact">Request help</a>
+                    <h3>Get free data support from NBIS</h3>
+                    <p>NBIS data stewards advise and guide you on preparing and submitting your data, from raw reads in ENA to ASV/OTU tables in the ASV Portal.</p>
+                    <a class="btn btn-primary" href="https://nbis.se/services/data-submission-support/apply" target="_blank" rel="noopener noreferrer">Apply for data support</a>
                 </article>
                 <article class="help-card reveal">
                     <h3>Help us getting an overview</h3>
@@ -893,18 +945,12 @@
     </section>
 
     <!-- NEWSLETTER -->
-    <section class="section band band-tint" id="newsletter">
+    <section class="section" id="newsletter">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Newsletter</h2>
-                <p>News from the network a few times a year: events, trainings, new resources and opportunities in metabarcoding.</p>
+                <p>News from the network a few times a year: events, trainings, new resources and opportunities in metabarcoding. It goes out to our <a class="inline-link" href="#email-list">email list</a>.</p>
             </div>
-
-            <article class="help-card help-card--highlight newsletter-signup reveal">
-                <h3>Sign up for our newsletter</h3>
-                <p>It's free and comes with no obligations.</p>
-                <a class="btn btn-primary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Sign up</a>
-            </article>
 
             <!-- Newsletter archive: each issue lives in newsletter/<issue>/index.html (newest first) -->
             <h3 class="subsection-title reveal" id="newsletters">Newsletter archive</h3>
@@ -927,7 +973,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="section" id="contact">
+    <section class="section band band-tint" id="contact">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Contact &amp; partners</h2>
