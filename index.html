@@ -251,13 +251,14 @@
                 <h2>What is metabarcoding?</h2>
                 <p>
                     Metabarcoding identifies many organisms at once from the DNA contained in environmental or bulk
-                    samples. These steps take a sample from the field to FAIR biodiversity data. After sequencing, the
-                    workflow splits: processed ASVs go to the ASV Portal, raw reads go to ENA. The two complement each
-                    other and together make your data FAIR.
+                    samples. These steps take a sample from the field to FAIR biodiversity data. After sequencing, the raw
+                    reads are archived in ENA. The ASV Portal builds on that ENA submission and publishes the processed
+                    ASVs. The two complement each other and together make your data FAIR.
                 </p>
             </div>
 
-            <ol class="workflow" data-workflow>
+
+            <ol class="workflow">
                 <li class="workflow-step reveal" style="--step-color: #2f7d32;">
                     <div class="workflow-head">
                         <span class="workflow-number">1</span>
@@ -282,7 +283,7 @@
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/3-pcr-library-prep.jpg" alt="" loading="lazy"></div>
                     <p>Amplify target markers with PCR and prepare indexed libraries for sequencing.</p>
                 </li>
-                <li class="workflow-step workflow-step--fork reveal" style="--step-color: #2266b0;">
+                <li class="workflow-step reveal" style="--step-color: #2266b0;">
                     <div class="workflow-head">
                         <span class="workflow-number">4</span>
                         <h3>Sequencing</h3>
@@ -290,9 +291,19 @@
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/4-sequencing.jpg" alt="" loading="lazy"></div>
                     <p>Sequence the libraries using high-throughput sequencing technologies.</p>
                 </li>
-                <li class="workflow-step workflow-step--analysis reveal" style="--step-color: #1d4f91;">
+                <li class="workflow-step workflow-step--highlight workflow-step--ena reveal" style="--step-color: #2a6f97;">
                     <div class="workflow-head">
                         <span class="workflow-number">5</span>
+                        <h3>ENA</h3>
+                    </div>
+                    <div class="workflow-figure"><a href="https://www.ebi.ac.uk/ena/browser/home" target="_blank" rel="noopener noreferrer"><img class="workflow-image" src="files/Workflow/6b-ena.jpg" alt="European Nucleotide Archive (ENA)" loading="lazy"></a></div>
+                    <p>Archive your raw reads and metadata in the European Nucleotide Archive. This is required before uploading to the ASV Portal.</p>
+                    <a class="workflow-link" href="https://www.ebi.ac.uk/ena/browser/home" target="_blank" rel="noopener noreferrer">Open ENA →</a>
+                    <a class="workflow-link" href="https://nbis.se/services/data-submission-support/apply" target="_blank" rel="noopener noreferrer">Get NBIS data support →</a>
+                </li>
+                <li class="workflow-step reveal" style="--step-color: #1d4f91;">
+                    <div class="workflow-head">
+                        <span class="workflow-number">6</span>
                         <h3>Bioinformatics analysis</h3>
                     </div>
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/5-bioinformatics.jpg" alt="" loading="lazy"></div>
@@ -300,26 +311,16 @@
                 </li>
                 <li class="workflow-step workflow-step--highlight workflow-step--asv reveal" style="--step-color: #2a6f97;">
                     <div class="workflow-head">
-                        <span class="workflow-number">6a</span>
+                        <span class="workflow-number">7</span>
                         <h3>ASV portal</h3>
                     </div>
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/6a-asv-portal-logo.jpg" alt="ASV Portal logo" loading="lazy"></div>
-                    <p>Upload your ASVs for curation, annotation and public access in SBDI and GBIF.</p>
+                    <p>Upload your ASVs, linked to your ENA submission, for curation, annotation and public access in SBDI and GBIF.</p>
                     <a class="workflow-link" href="#asv-uploading">How to upload →</a>
-                </li>
-                <li class="workflow-step workflow-step--highlight workflow-step--ena reveal" style="--step-color: #2a6f97;">
-                    <div class="workflow-head">
-                        <span class="workflow-number">6b</span>
-                        <h3>ENA</h3>
-                    </div>
-                    <div class="workflow-figure"><a href="https://www.ebi.ac.uk/ena/browser/home" target="_blank" rel="noopener noreferrer"><img class="workflow-image" src="files/Workflow/6b-ena.jpg" alt="European Nucleotide Archive (ENA)" loading="lazy"></a></div>
-                    <p>Archive your raw reads and metadata in the European Nucleotide Archive.</p>
-                    <a class="workflow-link" href="https://www.ebi.ac.uk/ena/browser/home" target="_blank" rel="noopener noreferrer">Open ENA →</a>
-                    <a class="workflow-link" href="https://nbis.se/services/data-submission-support/apply" target="_blank" rel="noopener noreferrer">Get NBIS data support →</a>
                 </li>
                 <li class="workflow-step workflow-step--fair reveal" style="--step-color: #c98a1b;">
                     <div class="workflow-head">
-                        <span class="workflow-number">7</span>
+                        <span class="workflow-number">8</span>
                         <h3>FAIR data</h3>
                     </div>
                     <div class="workflow-figure"><img class="workflow-image" src="files/Workflow/7-fair-data.jpg" alt="" loading="lazy"></div>
