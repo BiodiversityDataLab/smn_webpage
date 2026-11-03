@@ -72,11 +72,11 @@
                     Join us <span class="nav-caret" aria-hidden="true"></span>
                 </button>
                 <div class="nav-dropdown" id="navJoin">
+                    <a class="nav-sublink" href="#join">Join our community</a>
+                    <a class="nav-sublink" href="#newsletter">Newsletter</a>
                     <a class="nav-sublink" href="#opportunities">Opportunities in metabarcoding</a>
                     <a class="nav-sublink" href="#monitoring">National biodiversity monitoring programmes</a>
                     <a class="nav-sublink" href="#networks">Metabarcoding networks worldwide</a>
-                    <a class="nav-sublink" href="#join">Join our community</a>
-                    <a class="nav-sublink" href="#newsletter">Newsletter</a>
                     <a class="nav-sublink" href="#contact">People &amp; partners</a>
                 </div>
             </div>
@@ -114,11 +114,11 @@
     </div>
     <div class="side-nav-group" data-group="join">
         <span class="side-nav-topic">Join us</span>
+        <a class="side-nav-link" href="#join"><span>Join our community</span></a>
+        <a class="side-nav-link" href="#newsletter"><span>Newsletter</span></a>
         <a class="side-nav-link" href="#opportunities"><span>Opportunities</span></a>
         <a class="side-nav-link" href="#monitoring"><span>Monitoring programmes</span></a>
         <a class="side-nav-link" href="#networks"><span>Networks worldwide</span></a>
-        <a class="side-nav-link" href="#join"><span>Join our community</span></a>
-        <a class="side-nav-link" href="#newsletter"><span>Newsletter</span></a>
         <a class="side-nav-link" href="#contact"><span>People &amp; partners</span></a>
     </div>
     <div class="side-nav-actions">
@@ -175,7 +175,7 @@
 
                 <div class="mini-stats" role="list" aria-label="Highlights">
                     <div class="stat-card" role="listitem">
-                        <div class="stat-number" data-count-to="69">0</div>
+                        <div class="stat-number" data-count-to="86">0</div>
                         <div class="stat-label">Members on our email list</div>
                     </div>
                     <div class="stat-card" role="listitem">
@@ -765,11 +765,67 @@
 
     <!-- ===================== JOIN US ===================== -->
 
+    <!-- HOW WE CAN HELP & MEMBERSHIP -->
+    <section class="section" id="join">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <span class="section-kicker">Join us</span>
+                <h2>Join our community</h2>
+                <p>Whether you have metabarcoding data or are new to the field, you're welcome to participate.</p>
+            </div>
+
+            <div class="join-cards">
+                <article class="help-card help-card--highlight reveal" id="email-list">
+                    <h3>Join our email list</h3>
+                    <p>Stay in touch with the network: invitations to events and workshops, news, opportunities and our newsletter. It's free and comes with no obligations.</p>
+                    <a class="btn btn-primary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Join the email list</a>
+                </article>
+                <article class="help-card reveal">
+                    <h3>Get free data support from NBIS</h3>
+                    <p>NBIS data stewards advise and guide you on preparing and submitting your data, from raw reads in ENA to ASV/OTU tables in the ASV Portal.</p>
+                    <a class="btn btn-primary" href="https://nbis.se/services/data-submission-support/apply" target="_blank" rel="noopener noreferrer">Apply for data support</a>
+                </article>
+                <article class="help-card reveal">
+                    <h3>Help us getting an overview</h3>
+                    <p>If you produce metabarcoding data and are interested in making them FAIR, fill out this short survey.</p>
+                    <a class="btn btn-secondary" href="https://forms.microsoft.com/e/UGTTGuYtAT" target="_blank" rel="noopener noreferrer">Survey</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section band band-tint" id="newsletter">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>Newsletter</h2>
+                <p>News from the network a few times a year: events, trainings, new resources and opportunities in metabarcoding. It goes out to our <a class="inline-link" href="#email-list">email list</a>.</p>
+            </div>
+
+            <!-- Newsletter archive: each issue lives in newsletter/<issue>/index.html (newest first) -->
+            <h3 class="subsection-title reveal" id="newsletters">Newsletter archive</h3>
+            <div class="timeline">
+                <article class="event reveal" id="newsletter-2026-autumn">
+                    <div class="event-date">
+                        <span class="event-day">19 OCT</span>
+                        <span class="event-month">2026</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Newsletter · Autumn 2026</h3>
+                        <p>Save the date for our first in-person meeting (8–9 December, Uppsala), our hybrid eDNA talk, SMN at BioSyst.EU 2026, news from SeDNAs and NeDNA-WG, the Milan Statement and the Swedish Biodiversity Symposium 2027.</p>
+                    </div>
+                    <div class="event-actions">
+                        <a class="btn btn-primary" href="newsletter/2026-autumn/" target="_blank" rel="noopener noreferrer">Read newsletter</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- OPPORTUNITIES -->
     <section class="section" id="opportunities">
         <div class="container">
             <div class="section-head title-bar--right reveal">
-                <span class="section-kicker">Join us</span>
                 <h2>Opportunities in metabarcoding</h2>
                 <p>Current positions and opportunities in biodiversity genomics and genetic monitoring.</p>
             </div>
@@ -784,12 +840,22 @@
                 </article>
 
                 <article class="opportunity-card reveal">
+                    <span class="opportunity-kicker">Call for proposals</span>
+                    <h3>GBIF call: building pipelines for publishing DNA-derived data through GBIF</h3>
+                    <p>GBIF is looking for proposals to build pipelines that make DNA-derived biodiversity data from eDNA and metabarcoding easier to publish and reuse. Relevant for groups working with molecular biodiversity data, bioinformatics, data standards and infrastructures.</p>
+                    <p><strong>Deadline: 30 November 2026</strong></p>
+                    <a class="btn btn-primary" href="https://www.gbif.org/news/7FJ7KKSdIyv1IXKF1wFkQR/call-for-proposals-building-pipelines-for-publishing-dna-derived-data-through-gbif" target="_blank" rel="noopener noreferrer">Read the call</a>
+                </article>
+
+                <!-- EXPIRED (deadline 30 Oct 2026), kept for reference
+                <article class="opportunity-card reveal">
                     <span class="opportunity-kicker">Call for contractors</span>
                     <h3>GBIF seeks a contractor for molecular OTU clustering and target-gene classification services</h3>
                     <p>This may be of interest to members of the network working with metabarcoding, eDNA and bioinformatics.</p>
                     <p><strong>Deadline: 30 October 2026</strong></p>
                     <a class="btn btn-primary" href="https://www.gbif.org/news/6DchNRkO4YWxR4pMVF776E/gbif-seeks-contractor-for-molecular-otu-clustering-and-target-gene-classification-services" target="_blank" rel="noopener noreferrer">Read the announcement</a>
                 </article>
+                -->
 
                 <article class="opportunity-card reveal">
                     <span class="opportunity-kicker">Share with the network</span>
@@ -925,62 +991,6 @@
         </div>
     </section>
 
-    <!-- HOW WE CAN HELP & MEMBERSHIP -->
-    <section class="section band band-tint" id="join">
-        <div class="container">
-            <div class="section-head title-bar--right reveal">
-                <h2>Join our community</h2>
-                <p>Whether you have metabarcoding data or are new to the field, you're welcome to participate.</p>
-            </div>
-
-            <div class="join-cards">
-                <article class="help-card help-card--highlight reveal" id="email-list">
-                    <h3>Join our email list</h3>
-                    <p>Stay in touch with the network: invitations to events and workshops, news, opportunities and our newsletter. It's free and comes with no obligations.</p>
-                    <a class="btn btn-primary" href="https://docs.google.com/forms/d/1zihPS7IHJC9sKgCF7LpO9-zynqJV1w1Px2Ue3BKULXQ/" target="_blank" rel="noopener noreferrer">Join the email list</a>
-                </article>
-                <article class="help-card reveal">
-                    <h3>Get free data support from NBIS</h3>
-                    <p>NBIS data stewards advise and guide you on preparing and submitting your data, from raw reads in ENA to ASV/OTU tables in the ASV Portal.</p>
-                    <a class="btn btn-primary" href="https://nbis.se/services/data-submission-support/apply" target="_blank" rel="noopener noreferrer">Apply for data support</a>
-                </article>
-                <article class="help-card reveal">
-                    <h3>Help us getting an overview</h3>
-                    <p>If you produce metabarcoding data and are interested in making them FAIR, fill out this short survey.</p>
-                    <a class="btn btn-secondary" href="https://forms.microsoft.com/e/UGTTGuYtAT" target="_blank" rel="noopener noreferrer">Survey</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="section" id="newsletter">
-        <div class="container">
-            <div class="section-head title-bar--right reveal">
-                <h2>Newsletter</h2>
-                <p>News from the network a few times a year: events, trainings, new resources and opportunities in metabarcoding. It goes out to our <a class="inline-link" href="#email-list">email list</a>.</p>
-            </div>
-
-            <!-- Newsletter archive: each issue lives in newsletter/<issue>/index.html (newest first) -->
-            <h3 class="subsection-title reveal" id="newsletters">Newsletter archive</h3>
-            <div class="timeline">
-                <article class="event reveal" id="newsletter-2026-autumn">
-                    <div class="event-date">
-                        <span class="event-day">19 OCT</span>
-                        <span class="event-month">2026</span>
-                    </div>
-                    <div class="event-body">
-                        <h3>Newsletter · Autumn 2026</h3>
-                        <p>Save the date for our first in-person meeting (8–9 December, Uppsala), our hybrid eDNA talk, SMN at BioSyst.EU 2026, news from SeDNAs and NeDNA-WG, the Milan Statement and the Swedish Biodiversity Symposium 2027.</p>
-                    </div>
-                    <div class="event-actions">
-                        <a class="btn btn-primary" href="newsletter/2026-autumn/" target="_blank" rel="noopener noreferrer">Read newsletter</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <!-- CONTACT -->
     <section class="section band band-tint" id="contact">
         <div class="container">
@@ -999,7 +1009,7 @@
                             <p>I am a biodiversity researcher dedicated to providing data and computational tools for combatting the global biodiversity crisis. I firmly believe in the potential of interdisciplinary research to provide new and innovative solutions to fill our gaps in understanding the spatial and temporal dynamics of biodiversity, by bringing together perspectives from ecology, statistics and machine learning, remote sensing, and environmental DNA.</p>
                             <p class="person-links">
                                 <a href="mailto:tobias.andermann@ebc.uu.se">tobias.andermann@ebc.uu.se</a>
-                                <a href="https://www.biodiversity.se/team/" target="_blank" rel="noopener noreferrer">Biodiversity Data Lab</a>
+                                <a href="https://orcid.org/0000-0002-0932-1623" target="_blank" rel="noopener noreferrer">ORCID</a>
                             </p>
                         </div>
                     </article>
