@@ -1045,6 +1045,14 @@ section[id],
 }
 [data-theme="light"] .announce-kicker{ color: #fff; }
 .announce-text{ margin: 0; flex: 1; }
+.announce-text p{ margin: 0; }
+/* Small inline key facts in the banner (bullets between items) */
+.announce-facts{
+  list-style: none; margin: 4px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 2px 18px;
+  font-size: 14px; font-weight: 700; color: var(--gold);
+}
+.announce-facts li::before{ content: "•"; margin-right: 6px; color: var(--accent2); }
 .announce-banner .btn{ flex: none; }
 
 .help-card--highlight{
@@ -1387,6 +1395,21 @@ section[id],
 .event-body p{ margin: 0 0 10px; color: var(--muted); }
 .event-body a{ text-decoration: underline; text-underline-offset: 3px; }
 .event-meta-text{ margin: 0; color: var(--muted2); font-weight: 700; font-size: 13px; }
+
+/* Key facts as highlighted boxes (SMN meeting 2026: main page event + registration page) */
+.key-facts{
+  list-style: none; margin: 12px 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;
+}
+.key-facts li{
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 12px 14px;
+  border: 2px solid var(--gold); border-radius: 12px;
+  background: rgba(227, 181, 82, 0.10);
+}
+.key-facts strong{ font-size: 16px; line-height: 1.25; }
+.key-facts span{ font-size: 13px; color: var(--muted); }
+@media (max-width: 640px){ .key-facts{ grid-template-columns: 1fr; } }
 
 .event-actions{ display:flex; justify-content:flex-end; flex-wrap: wrap; gap: 8px; }
 .event-actions .btn{ white-space: nowrap; }

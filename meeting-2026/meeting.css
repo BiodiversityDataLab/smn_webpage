@@ -1,0 +1,173 @@
+/* Registration page for the SMN meeting 2026 - builds on ../styles.css (tokens, buttons, inputs) */
+
+/* No side rail on this page */
+body.subpage{ padding-left: 0; }
+.subpage{ --container: 1080px; }
+
+.sub-header{
+  padding: 14px 0;
+  background: rgba(0,0,0,0.18);
+  border-bottom: 1px solid var(--section-divider);
+}
+[data-theme="light"] .sub-header{ background: rgba(255,255,255,0.45); }
+.sub-header-inner{ display:flex; align-items:center; justify-content:space-between; gap: 16px; }
+.sub-brand{ display:flex; align-items:center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; }
+/* Full rectangular logo on a white card (same look as the sidebar logo on the main page) */
+.sub-brand img{
+  display:block; width: 96px; height: auto;
+  padding: 4px 8px; border-radius: 10px;
+  background: #fff; box-shadow: var(--shadow-soft);
+}
+
+.meeting-page{ padding: 26px 0 60px; }
+.back-link{ display:inline-block; color: var(--muted); font-weight: 700; font-size: 14px; }
+.back-link:hover{ color: var(--text); }
+
+/* ----- Title ----- */
+.meeting-title{ margin: 22px 0 30px; }
+.meeting-title h1{
+  margin: 14px 0 10px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+.meeting-meta{ display:flex; flex-wrap:wrap; gap: 10px; margin: 0; color: var(--gold); font-size: 17px; }
+.meeting-meta span{ color: var(--muted2); }
+.meeting-title .key-facts{ margin: 18px 0; }
+
+/* ----- Info cards ----- */
+.info-card, .register-card{
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: var(--shadow-soft);
+}
+.info-card h2, .register-card h2, .homework-box h2{ margin: 0 0 8px; font-size: 22px; }
+.info-card p{ margin: 8px 0 0; }
+.info-card h3{ margin: 18px 0 8px; font-size: 13px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; }
+.about-card{ margin-bottom: 22px; }
+
+.info-grid{
+  display:grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items:start;
+}
+@media (max-width: 860px){ .info-grid{ grid-template-columns: 1fr; } }
+
+.schedule{ list-style:none; margin: 0; padding: 0; display:grid; gap: 9px; }
+.schedule li{ display:grid; grid-template-columns: 54px 1fr; gap: 10px; line-height: 1.45; }
+.schedule span{ color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Location */
+.venue-photo{ margin: 4px 0 14px; }
+.venue-photo img{
+  display:block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--radius); border: 1px solid var(--border);
+}
+.venue-photo figcaption{ margin-top: 6px; font-size: 12px; color: var(--muted2); text-align: right; }
+.location-card address{ font-style: normal; line-height: 1.55; }
+.map-frame{
+  margin-top: 14px; overflow: hidden;
+  border-radius: var(--radius); border: 1px solid var(--border);
+}
+.map-frame iframe{ display:block; width: 100%; height: 240px; border: 0; }
+.map-links{ font-size: 14px; }
+
+/* Homework */
+.homework-box h3{ margin: 0 0 6px; font-size: 17px; }
+.homework-box{
+  margin: 22px 0 0;
+  padding: 20px 24px;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-lg);
+  background: rgba(227,181,82,0.10);
+  box-shadow: 0 0 0 4px rgba(227,181,82,0.10);
+}
+.homework-box p{ margin: 0; line-height: 1.55; }
+
+/* ----- Registration form ----- */
+.register-card{ scroll-margin-top: 20px; }
+fieldset{
+  margin: 22px 0 0;
+  padding: 18px 0 0;
+  border: 0;
+  border-top: 1px solid var(--section-divider);
+}
+legend{ padding: 0; font-weight: 800; font-size: 17px; }
+.field-hint{ margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+.field-question{ margin: 14px 0 2px; font-weight: 700; font-size: 14px; color: var(--muted); }
+
+.field-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+@media (max-width: 600px){ .field-grid{ grid-template-columns: 1fr; } }
+.field{ margin-top: 12px; }
+.field span{ display:block; margin-bottom: 6px; color: var(--muted); font-weight: 700; font-size: 13px; }
+
+select{
+  width:100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  padding: 12px;
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+[data-theme="light"] select{ background: rgba(0,0,0,0.03); }
+select:focus{ box-shadow: var(--focus); }
+select option{ color: #13301f; }
+
+.required{ color: var(--gold); font-style: normal; }
+
+.choice-day{ margin: 16px 0 2px; font-size: 13px; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; }
+.choice{
+  display:flex;
+  align-items:flex-start;
+  gap: 10px;
+  margin: 8px 0 0;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.choice input{ width: 18px; height: 18px; margin: 2px 0 0; flex: none; accent-color: var(--accent2); padding: 0; }
+.choice span{ display:inline; margin: 0; color: inherit; font-weight: inherit; font-size: inherit; }
+.choice-time{ color: var(--muted) !important; font-size: 13px !important; font-weight: 700 !important; margin-left: 4px !important; }
+.choice-row{ display:flex; flex-wrap:wrap; gap: 4px 22px; }
+
+/* Follow-up questions under a ticked option */
+.sub-choices{
+  margin: 6px 0 4px 28px;
+  padding: 2px 0 10px 16px;
+  border-left: 3px solid var(--accent2);
+}
+.sub-choices .field-question{ margin-top: 8px; }
+.field-question .field-hint{ margin: 0 0 0 6px; font-weight: 400; font-size: 13px; }
+
+/* Bullet notes under a choice (e.g. workshop: own data optional) */
+.choice-notes{ margin: -2px 0 6px 28px; padding-left: 18px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.choice-notes li::marker{ color: var(--accent2); }
+.sub-choices .choice-notes{ margin: 8px 0 0; }
+
+/* Live "places left" line (filled from the backend status) */
+.spots-left{ margin: 4px 0 14px; font-weight: 700; color: var(--gold); }
+.spots-left.full{ color: #e57373; }
+
+.hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+.was-validated input:invalid, .was-validated textarea:invalid, .was-validated select:invalid{
+  border-color: #d9534f;
+}
+.was-validated .choice input:invalid{ outline: 2px solid #d9534f; outline-offset: 1px; }
+.group-error{ margin: 8px 0 0; color: #e57373; font-weight: 700; font-size: 14px; }
+
+.form-submit{ margin-top: 26px; min-height: 48px; padding: 12px 22px; font-size: 15px; }
+.form-submit:disabled{ opacity: 0.6; cursor: not-allowed; transform: none; }
+.form-status{ display:none; margin-top: 14px; padding: 12px 14px; border-radius: 14px; font-weight: 700; }
+.form-status.show{ display:block; background: rgba(90,164,73,0.16); border: 1px solid rgba(90,164,73,0.45); }
+.form-status.error{ background: rgba(217,83,79,0.14); border-color: rgba(217,83,79,0.45); }
+.form-status.preview{ background: rgba(227,181,82,0.12); border-color: rgba(227,181,82,0.5); }
+
+.text-link{ text-decoration: underline; text-decoration-color: rgba(90,164,73,0.6); text-underline-offset: 3px; }
+.contact-line{ margin: 22px 0 0; color: var(--muted); font-size: 14px; }
+
+.sub-footer{ padding: 22px 0 30px; border-top: 1px solid var(--section-divider); color: var(--muted); font-size: 14px; }
