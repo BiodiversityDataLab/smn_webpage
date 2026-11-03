@@ -169,6 +169,12 @@
       text.className = "partner-link-text";
       text.textContent = linkText;
 
+      // Wide wordmark logos already contain the name -> show only the logo, keep the text for screen readers
+      if (manualLogoUrl && link.hasAttribute("data-logo-wide")) {
+        logo.classList.add("partner-logo--wide");
+        text.classList.add("visually-hidden");
+      }
+
       link.textContent = "";
       link.append(logo, text);
     });

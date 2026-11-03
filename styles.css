@@ -1553,6 +1553,74 @@ section[id],
   border-radius: 8px;
 }
 
+.partner-logos .partner-logo--wide{
+  width: auto;
+  height: 34px;
+  max-width: 100%;
+  padding: 5px 9px;
+  box-sizing: border-box;
+}
+.visually-hidden{
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- People ---------- */
+.people-block{ margin-bottom: 34px; }
+.people-block .subsection-title{ margin-top: 0; }
+.people-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.person-card{
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: var(--shadow-soft);
+}
+.person-photo{
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+.person-body h4{
+  margin: 2px 0 2px;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+.person-affil{
+  margin: 0 0 10px;
+  color: var(--muted2);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.person-body p{ margin: 0 0 10px; color: var(--muted); }
+.person-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.person-links a{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .contact-form{
   padding: 18px;
   border-radius: var(--radius);
@@ -1681,6 +1749,7 @@ input:focus, textarea:focus{ box-shadow: var(--focus); }
   .network-directory{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid{ grid-template-columns: 1fr; }
   .partner-logos{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .people-grid{ grid-template-columns: 1fr; }
   .event{ grid-template-columns: 100px 1fr; }
   .event-actions{ grid-column: 2; }
   .event-actions{ justify-content:flex-start; }
@@ -1705,6 +1774,8 @@ input:focus, textarea:focus{ box-shadow: var(--focus); }
   .join-cards{ grid-template-columns: 1fr; }
   .announce-banner{ flex-direction: column; align-items: flex-start; gap: 10px; }
   .partner-logos{ grid-template-columns: 1fr; }
+  .person-card{ grid-template-columns: 72px 1fr; gap: 12px; }
+  .person-photo{ width: 72px; height: 72px; }
   .contribute-item{
     grid-template-columns: 1fr;
     align-items: start;
