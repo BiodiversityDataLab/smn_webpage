@@ -357,8 +357,8 @@
 
   // ---------- Contact form ----------
   window.SMN = window.SMN || {};
-  const contactRecipient = "linus-finn.lassen.6588@student.uu.se";
-  const contactEndpoint = "https://formsubmit.co/ajax/linus-finn.lassen.6588@student.uu.se";
+  const contactRecipient = "linus.lassen@ebc.uu.se";
+  const contactEndpoint = "https://formsubmit.co/ajax/linus.lassen@ebc.uu.se";
   window.SMN.handleFakeSubmit = function (event) {
     event.preventDefault();
 
