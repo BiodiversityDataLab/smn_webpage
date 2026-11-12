@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="files/smn_logo_boreal.png">
     <link rel="apple-touch-icon" href="files/smn_logo_boreal.png">
 
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="styles.css?v=2026-11-12c"/>
 </head>
 
 <body>
@@ -53,17 +53,26 @@
             </div>
 
             <div class="nav-group">
+                <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="navData">
+                    Metabarcoding data <span class="nav-caret" aria-hidden="true"></span>
+                </button>
+                <div class="nav-dropdown" id="navData">
+                    <a class="nav-sublink" href="#data-map">Map of Swedish metabarcoding data</a>
+                    <a class="nav-sublink nav-sublink--highlight" href="#asv-uploading">Publishing your data via the ASV portal</a>
+                    <a class="nav-sublink" href="#dataset-highlights">Dataset highlights</a>
+                    <a class="nav-sublink" href="#publications">Publications</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
                 <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="navResources">
                     Resources <span class="nav-caret" aria-hidden="true"></span>
                 </button>
                 <div class="nav-dropdown" id="navResources">
-                    <a class="nav-sublink nav-sublink--highlight" href="#asv-uploading">Publishing your data via the ASV portal</a>
                     <a class="nav-sublink" href="#events">Events &amp; trainings</a>
-                    <a class="nav-sublink" href="#tools">Tools for metabarcoding</a>
-                    <a class="nav-sublink" href="#protocols">Protocols</a>
                     <a class="nav-sublink" href="#tutorials">Tutorials</a>
-                    <a class="nav-sublink" href="#dataset-highlights">Dataset highlights</a>
-                    <a class="nav-sublink" href="#publications">Publications</a>
+                    <a class="nav-sublink" href="#protocols">Protocols</a>
+                    <a class="nav-sublink" href="#tools">Tools for metabarcoding</a>
                 </div>
             </div>
 
@@ -102,15 +111,19 @@
         <a class="side-nav-link" href="#about"><span>About our network</span></a>
         <a class="side-nav-link" href="#metabarcoding"><span>What is metabarcoding?</span></a>
     </div>
-    <div class="side-nav-group" data-group="resources">
-        <span class="side-nav-topic">Resources</span>
+    <div class="side-nav-group" data-group="data">
+        <span class="side-nav-topic">Metabarcoding data</span>
+        <a class="side-nav-link" href="#data-map"><span>Data map</span></a>
         <a class="side-nav-link" href="#asv-uploading"><span>Publishing your data via the ASV portal</span></a>
-        <a class="side-nav-link" href="#events"><span>Events &amp; trainings</span></a>
-        <a class="side-nav-link" href="#tools"><span>Tools for metabarcoding</span></a>
-        <a class="side-nav-link" href="#protocols"><span>Protocols</span></a>
-        <a class="side-nav-link" href="#tutorials"><span>Tutorials</span></a>
         <a class="side-nav-link" href="#dataset-highlights"><span>Dataset highlights</span></a>
         <a class="side-nav-link" href="#publications"><span>Publications</span></a>
+    </div>
+    <div class="side-nav-group" data-group="resources">
+        <span class="side-nav-topic">Resources</span>
+        <a class="side-nav-link" href="#events"><span>Events &amp; trainings</span></a>
+        <a class="side-nav-link" href="#tutorials"><span>Tutorials</span></a>
+        <a class="side-nav-link" href="#protocols"><span>Protocols</span></a>
+        <a class="side-nav-link" href="#tools"><span>Tools for metabarcoding</span></a>
     </div>
     <div class="side-nav-group" data-group="join">
         <span class="side-nav-topic">Join us</span>
@@ -337,13 +350,73 @@
         </div>
     </section>
 
-    <!-- ===================== RESOURCES ===================== -->
+    <!-- ===================== METABARCODING DATA ===================== -->
 
-    <!-- ASV PORTAL -->
-    <section class="section band band-tint" id="asv-uploading">
+    <!-- DATA MAP: loads live from the GBIF APIs (records with DNA sequences, publishing country Sweden); code in script.js -->
+    <section class="section band band-tint" id="data-map">
         <div class="container">
             <div class="section-head title-bar--right reveal">
-                <span class="section-kicker">Resources</span>
+                <span class="section-kicker">Metabarcoding data</span>
+                <h2>Swedish metabarcoding data on the map</h2>
+                <p>
+                    DNA-based biodiversity records that Swedish institutions have published on GBIF, from Sweden and
+                    from wherever Swedish researchers sample. Map and numbers load live from GBIF.
+                </p>
+            </div>
+
+            <div class="gbif-panel reveal">
+                <div class="mini-stats gbif-stats" role="list" aria-label="Swedish metabarcoding data on GBIF">
+                    <div class="stat-card" role="listitem">
+                        <div class="stat-number" data-gbif-stat="records">&ndash;</div>
+                        <div class="stat-label">DNA-based occurrence records</div>
+                    </div>
+                    <div class="stat-card" role="listitem">
+                        <div class="stat-number" data-gbif-stat="species">&ndash;</div>
+                        <div class="stat-label">Species</div>
+                    </div>
+                    <div class="stat-card" role="listitem">
+                        <div class="stat-number" data-gbif-stat="datasets">&ndash;</div>
+                        <div class="stat-label">Datasets</div>
+                    </div>
+                    <div class="stat-card" role="listitem">
+                        <div class="stat-number" data-gbif-stat="countries">&ndash;</div>
+                        <div class="stat-label">Countries sampled</div>
+                    </div>
+                </div>
+
+                <div class="gbif-map" id="gbifMap" role="region" aria-label="Interactive map of DNA-based records published from Sweden">
+                    <p class="gbif-map-status">Loading map from GBIF&hellip;</p>
+                </div>
+
+                <div class="gbif-foot">
+                    <div class="gbif-foot-text">
+                        <div class="gbif-legend" aria-label="Hexagon colour: number of records in that area, from fewer to more">
+                            <span>Fewer records</span>
+                            <span class="gbif-legend-bar" aria-hidden="true"></span>
+                            <span>More records</span>
+                        </div>
+                        <p class="fineprint">
+                            Records with DNA sequence data, published by organisations in Sweden. Click the map to zoom
+                            with the scroll wheel. Data:
+                            <a href="https://www.gbif.org/" target="_blank" rel="noopener noreferrer">GBIF.org</a>
+                        </p>
+                    </div>
+                    <a class="btn btn-primary" href="https://www.gbif.org/occurrence/search?publishingCountry=SE&amp;isSequenced=true&amp;view=dashboard"
+                       target="_blank" rel="noopener noreferrer">Explore on GBIF</a>
+                </div>
+
+                <details class="gbif-datasets">
+                    <summary>Datasets on the map</summary>
+                    <ol class="gbif-dataset-list" id="gbifDatasetList"></ol>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASV PORTAL -->
+    <section class="section" id="asv-uploading">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
                 <h2>Publishing your data via the ASV portal</h2>
                 <p>
                     Mobilising metabarcoding data to the ASV Portal is one of our core aims. The portal curates and
@@ -399,10 +472,53 @@
         </div>
     </section>
 
-    <!-- EVENTS -->
-    <section class="section" id="events">
+    <!-- DATASET HIGHLIGHTS -->
+    <section class="section band band-tint" id="dataset-highlights">
         <div class="container">
             <div class="section-head title-bar--right reveal">
+                <h2>Dataset highlights</h2>
+                <p>A space for dataset publishers to share a short introduction to their work, supported by a figure or visual summary.</p>
+            </div>
+            <figure class="dataset-figure-placeholder reveal">
+                <div class="dataset-figure-placeholder-inner">Figure placeholder</div>
+                <figcaption>Dataset highlight coming soon.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS: metabarcoding-related publications from the network, grouped by year (newest first) -->
+    <section class="section" id="publications">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <h2>Publications</h2>
+                <p>Metabarcoding and eDNA publications from members of our network.</p>
+            </div>
+
+            <h3 class="subsection-title pub-year reveal">2026</h3>
+            <ol class="pub-list">
+                <li class="pub-item reveal">
+                    <a class="pub-title" href="https://doi.org/10.64898/2026.09.13.750568" target="_blank" rel="noopener noreferrer">Environmental DNA substrates capture complementary dimensions of insect biodiversity</a>
+                    <span class="pub-authors">Beilun Zhao, John Sundh, Tobias Andermann</span>
+                    <span class="pub-meta"><em>bioRxiv</em> (preprint) · Sep 2026 · <a href="https://doi.org/10.64898/2026.09.13.750568" target="_blank" rel="noopener noreferrer">doi:10.64898/2026.09.13.750568</a></span>
+                </li>
+                <li class="pub-item reveal">
+                    <a class="pub-title" href="https://doi.org/10.1111/1755-0998.70096" target="_blank" rel="noopener noreferrer">Properties and Limitations of eDNA Substrates for Terrestrial Animal Monitoring</a>
+                    <span class="pub-authors">Beilun Zhao, Tobias Andermann</span>
+                    <span class="pub-meta"><em>Molecular Ecology Resources</em> 26(2): e70096 · Feb 2026 · <a href="https://doi.org/10.1111/1755-0998.70096" target="_blank" rel="noopener noreferrer">doi:10.1111/1755-0998.70096</a></span>
+                </li>
+            </ol>
+            <p class="network-source reveal">Published something on metabarcoding? <a href="#contact">Let us know</a> and we will add it.</p>
+        </div>
+    </section>
+
+
+    <!-- ===================== RESOURCES ===================== -->
+
+    <!-- EVENTS -->
+    <section class="section band band-tint" id="events">
+        <div class="container">
+            <div class="section-head title-bar--right reveal">
+                <span class="section-kicker">Resources</span>
                 <h2>Events & Training</h2>
                 <p>Training sessions focused on biodiversity monitoring, methods, and data publishing.</p>
             </div>
@@ -557,109 +673,8 @@
         </div>
     </section>
 
-    <!-- TOOLS -->
-    <section class="section band band-tint" id="tools">
-        <div class="container">
-            <div class="section-head title-bar--right reveal">
-                <h2>Tools for metabarcoding</h2>
-                <p>Quick access to key tools and guidance for metabarcoding projects in Sweden.</p>
-            </div>
-
-            <div class="resource-grid">
-                <a class="resource-tile reveal resource-logo-link" href="https://asv-portal.biodiversitydata.se/download?" target="_blank"
-                   rel="noopener noreferrer">
-                    <div class="resource-top">
-                        <h3>Overview of existing datasets</h3>
-                    </div>
-                    <p>Browse and download currently available ASV datasets through the ASV Portal download overview.</p>
-                    <span class="resource-link">Open resource →</span>
-                </a>
-
-                <a class="resource-tile reveal resource-logo-link" href="https://biodiversitydata.se/" target="_blank"
-                   rel="noopener noreferrer">
-                    <div class="resource-top">
-                        <h3>SBDI</h3>
-                    </div>
-                    <p>National infrastructure for open and FAIR biodiversity data, tools, and taxonomies.</p>
-                    <span class="resource-link">Open resource →</span>
-                </a>
-
-                <a class="resource-tile reveal resource-logo-link" href="https://www.scilifelab.se/" target="_blank"
-                   rel="noopener noreferrer">
-                    <div class="resource-top">
-                        <h3>SciLifeLab</h3>
-                    </div>
-                    <p>Sweden's national research infrastructure for life science technologies and expertise.</p>
-                    <span class="resource-link">Open resource →</span>
-                </a>
-
-                <a class="resource-tile reveal resource-logo-link" href="https://www.gbif.se/" target="_blank"
-                   rel="noopener noreferrer">
-                    <div class="resource-top">
-                        <h3>GBIF Sweden</h3>
-                    </div>
-                    <p>Swedish node of the Global Biodiversity Information Facility for open biodiversity data access and publishing.</p>
-                    <span class="resource-link">Open resource →</span>
-                </a>
-
-                <a class="resource-tile reveal resource-logo-link" href="https://www.protocols.io/" target="_blank"
-                   rel="noopener noreferrer">
-                    <div class="resource-top">
-                        <h3>protocols.io</h3>
-                    </div>
-                    <p>Bring structure to your research with a secure platform for developing and sharing reproducible methods.</p>
-                    <span class="resource-link">Open resource →</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROTOCOLS -->
-    <section class="section" id="protocols">
-        <div class="container">
-            <div class="section-head title-bar--right reveal">
-                <h2>Protocols</h2>
-                <p>Curated protocols for insect metabarcoding workflows, grouped by theme.</p>
-            </div>
-
-            <div class="protocol-group reveal">
-                <h3>Bulk samples to sequencing</h3>
-                <ul class="protocol-list">
-                    <li class="protocol-item">
-                        <a class="protocol-title" href="https://www.protocols.io/view/favis-fast-and-versatile-protocol-for-metabarcodin-kqdg36261g25/v2" target="_blank" rel="noopener noreferrer">
-                            FAVIS v2: Fast and Versatile protocol for bulk insect metabarcoding
-                        </a>
-                        <p>Non-destructive, high-throughput workflow from lab setup and sample handling to DNA extraction, library prep and sequencing.</p>
-                        <span class="protocol-meta">Malaise/bulk insect catches • Cost-effective • Scales to large monitoring projects</span>
-                    </li>
-
-                    <li class="protocol-item">
-                        <a class="protocol-title" href="https://www.protocols.io/view/sample-homogenization-and-dna-extraction-for-bulk-yxmvm31bbl3p/v1" target="_blank" rel="noopener noreferrer">
-                            Sample homogenization and DNA extraction for bulk insect catches
-                        </a>
-                        <p>Whole-catch homogenization and magnetic bead purification protocol to recover additional DNA from bulk trap samples.</p>
-                        <span class="protocol-meta">Bulk insect soup workflow • Compatible with FAVIS-derived samples</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="protocol-group reveal">
-                <h3>Standardization and controls</h3>
-                <ul class="protocol-list">
-                    <li class="protocol-item">
-                        <a class="protocol-title" href="https://www.protocols.io/view/synthetic-coi-spike-ins-for-use-in-metabarcoding-b-14egn33ryl5d/v2" target="_blank" rel="noopener noreferrer">
-                            Synthetic COI spike-ins for metabarcoding-based insect surveys
-                        </a>
-                        <p>Design, production and storage of synthetic COI spike-ins as internal controls to improve comparability across samples and experiments.</p>
-                        <span class="protocol-meta">Internal positive controls • Cross-study comparability • Method harmonization</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- TUTORIALS -->
-    <section class="section band band-tint" id="tutorials">
+    <section class="section" id="tutorials">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Tutorials</h2>
@@ -737,42 +752,104 @@
         </div>
     </section>
 
-    <!-- DATASET HIGHLIGHTS -->
-    <section class="section" id="dataset-highlights">
+    <!-- PROTOCOLS -->
+    <section class="section band band-tint" id="protocols">
         <div class="container">
             <div class="section-head title-bar--right reveal">
-                <h2>Dataset highlights</h2>
-                <p>A space for dataset publishers to share a short introduction to their work, supported by a figure or visual summary.</p>
+                <h2>Protocols</h2>
+                <p>Curated protocols for insect metabarcoding workflows, grouped by theme.</p>
             </div>
-            <figure class="dataset-figure-placeholder reveal">
-                <div class="dataset-figure-placeholder-inner">Figure placeholder</div>
-                <figcaption>Dataset highlight coming soon.</figcaption>
-            </figure>
+
+            <div class="protocol-group reveal">
+                <h3>Bulk samples to sequencing</h3>
+                <ul class="protocol-list">
+                    <li class="protocol-item">
+                        <a class="protocol-title" href="https://www.protocols.io/view/favis-fast-and-versatile-protocol-for-metabarcodin-kqdg36261g25/v2" target="_blank" rel="noopener noreferrer">
+                            FAVIS v2: Fast and Versatile protocol for bulk insect metabarcoding
+                        </a>
+                        <p>Non-destructive, high-throughput workflow from lab setup and sample handling to DNA extraction, library prep and sequencing.</p>
+                        <span class="protocol-meta">Malaise/bulk insect catches • Cost-effective • Scales to large monitoring projects</span>
+                    </li>
+
+                    <li class="protocol-item">
+                        <a class="protocol-title" href="https://www.protocols.io/view/sample-homogenization-and-dna-extraction-for-bulk-yxmvm31bbl3p/v1" target="_blank" rel="noopener noreferrer">
+                            Sample homogenization and DNA extraction for bulk insect catches
+                        </a>
+                        <p>Whole-catch homogenization and magnetic bead purification protocol to recover additional DNA from bulk trap samples.</p>
+                        <span class="protocol-meta">Bulk insect soup workflow • Compatible with FAVIS-derived samples</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="protocol-group reveal">
+                <h3>Standardization and controls</h3>
+                <ul class="protocol-list">
+                    <li class="protocol-item">
+                        <a class="protocol-title" href="https://www.protocols.io/view/synthetic-coi-spike-ins-for-use-in-metabarcoding-b-14egn33ryl5d/v2" target="_blank" rel="noopener noreferrer">
+                            Synthetic COI spike-ins for metabarcoding-based insect surveys
+                        </a>
+                        <p>Design, production and storage of synthetic COI spike-ins as internal controls to improve comparability across samples and experiments.</p>
+                        <span class="protocol-meta">Internal positive controls • Cross-study comparability • Method harmonization</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 
-    <!-- PUBLICATIONS: metabarcoding-related publications from the network, grouped by year (newest first) -->
-    <section class="section band band-tint" id="publications">
+    <!-- TOOLS -->
+    <section class="section" id="tools">
         <div class="container">
             <div class="section-head title-bar--right reveal">
-                <h2>Publications</h2>
-                <p>Metabarcoding and eDNA publications from members of our network.</p>
+                <h2>Tools for metabarcoding</h2>
+                <p>Quick access to key tools and guidance for metabarcoding projects in Sweden.</p>
             </div>
 
-            <h3 class="subsection-title pub-year reveal">2026</h3>
-            <ol class="pub-list">
-                <li class="pub-item reveal">
-                    <a class="pub-title" href="https://doi.org/10.64898/2026.09.13.750568" target="_blank" rel="noopener noreferrer">Environmental DNA substrates capture complementary dimensions of insect biodiversity</a>
-                    <span class="pub-authors">Beilun Zhao, John Sundh, Tobias Andermann</span>
-                    <span class="pub-meta"><em>bioRxiv</em> (preprint) · Sep 2026 · <a href="https://doi.org/10.64898/2026.09.13.750568" target="_blank" rel="noopener noreferrer">doi:10.64898/2026.09.13.750568</a></span>
-                </li>
-                <li class="pub-item reveal">
-                    <a class="pub-title" href="https://doi.org/10.1111/1755-0998.70096" target="_blank" rel="noopener noreferrer">Properties and Limitations of eDNA Substrates for Terrestrial Animal Monitoring</a>
-                    <span class="pub-authors">Beilun Zhao, Tobias Andermann</span>
-                    <span class="pub-meta"><em>Molecular Ecology Resources</em> 26(2): e70096 · Feb 2026 · <a href="https://doi.org/10.1111/1755-0998.70096" target="_blank" rel="noopener noreferrer">doi:10.1111/1755-0998.70096</a></span>
-                </li>
-            </ol>
-            <p class="network-source reveal">Published something on metabarcoding? <a href="#contact">Let us know</a> and we will add it.</p>
+            <div class="resource-grid">
+                <a class="resource-tile reveal resource-logo-link" href="https://asv-portal.biodiversitydata.se/download?" target="_blank"
+                   rel="noopener noreferrer">
+                    <div class="resource-top">
+                        <h3>Overview of existing datasets</h3>
+                    </div>
+                    <p>Browse and download currently available ASV datasets through the ASV Portal download overview.</p>
+                    <span class="resource-link">Open resource →</span>
+                </a>
+
+                <a class="resource-tile reveal resource-logo-link" href="https://biodiversitydata.se/" target="_blank"
+                   rel="noopener noreferrer">
+                    <div class="resource-top">
+                        <h3>SBDI</h3>
+                    </div>
+                    <p>National infrastructure for open and FAIR biodiversity data, tools, and taxonomies.</p>
+                    <span class="resource-link">Open resource →</span>
+                </a>
+
+                <a class="resource-tile reveal resource-logo-link" href="https://www.scilifelab.se/" target="_blank"
+                   rel="noopener noreferrer">
+                    <div class="resource-top">
+                        <h3>SciLifeLab</h3>
+                    </div>
+                    <p>Sweden's national research infrastructure for life science technologies and expertise.</p>
+                    <span class="resource-link">Open resource →</span>
+                </a>
+
+                <a class="resource-tile reveal resource-logo-link" href="https://www.gbif.se/" target="_blank"
+                   rel="noopener noreferrer">
+                    <div class="resource-top">
+                        <h3>GBIF Sweden</h3>
+                    </div>
+                    <p>Swedish node of the Global Biodiversity Information Facility for open biodiversity data access and publishing.</p>
+                    <span class="resource-link">Open resource →</span>
+                </a>
+
+                <a class="resource-tile reveal resource-logo-link" href="https://www.protocols.io/" target="_blank"
+                   rel="noopener noreferrer">
+                    <div class="resource-top">
+                        <h3>protocols.io</h3>
+                    </div>
+                    <p>Bring structure to your research with a secure platform for developing and sharing reproducible methods.</p>
+                    <span class="resource-link">Open resource →</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -780,7 +857,7 @@
     <!-- ===================== JOIN US ===================== -->
 
     <!-- HOW WE CAN HELP & MEMBERSHIP -->
-    <section class="section" id="join">
+    <section class="section band band-tint" id="join">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <span class="section-kicker">Join us</span>
@@ -809,7 +886,7 @@
     </section>
 
     <!-- NEWSLETTER -->
-    <section class="section band band-tint" id="newsletter">
+    <section class="section" id="newsletter">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Newsletter</h2>
@@ -837,7 +914,7 @@
     </section>
 
     <!-- OPPORTUNITIES -->
-    <section class="section" id="opportunities">
+    <section class="section band band-tint" id="opportunities">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Opportunities in metabarcoding</h2>
@@ -882,7 +959,7 @@
     </section>
 
     <!-- NATIONAL MONITORING (placeholder) -->
-    <section class="section band band-tint" id="monitoring">
+    <section class="section" id="monitoring">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>National biodiversity monitoring programmes</h2>
@@ -944,7 +1021,7 @@
     </section>
 
     <!-- NETWORKS WORLDWIDE (placeholder) -->
-    <section class="section" id="networks">
+    <section class="section band band-tint" id="networks">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>Metabarcoding networks worldwide</h2>
@@ -1022,7 +1099,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="section band band-tint" id="contact">
+    <section class="section" id="contact">
         <div class="container">
             <div class="section-head title-bar--right reveal">
                 <h2>People &amp; partners</h2>
@@ -1095,6 +1172,13 @@
                             <a href="mailto:smn-members@lists.uu.se">smn-members@lists.uu.se</a>
                         </p>
                     </div>
+                    <div class="contact-card reveal">
+                        <h3>Follow us</h3>
+                        <p class="contact-line">
+                            <svg class="contact-icon-linkedin" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                            <a href="https://www.linkedin.com/company/swedish-metabarcoding-network" target="_blank" rel="noopener noreferrer">SMN on LinkedIn</a>
+                        </p>
+                    </div>
                 </div>
 
                 <form class="contact-form reveal" onsubmit="return window.SMN.handleFakeSubmit(event);">
@@ -1161,6 +1245,6 @@
     </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2026-11-12c"></script>
 </body>
 </html>

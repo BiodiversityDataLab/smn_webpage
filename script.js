@@ -409,4 +409,173 @@
     return false;
   };
 
+
+  // ---------- Data map (live from GBIF) ----------
+  // Filter: records with DNA sequences (isSequenced) published by organisations in Sweden.
+  // No API key needed. Leaflet is loaded only when the map comes near the viewport.
+  const gbifMapEl = document.getElementById("gbifMap");
+  if (gbifMapEl) {
+    const GBIF_FILTER = { publishingCountry: "SE", isSequenced: "true" };
+    const LEAFLET_JS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+    const LEAFLET_CSS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
+    const LEAFLET_JS_SRI = "sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO";
+    const LEAFLET_CSS_SRI = "sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb";
+    const statusEl = gbifMapEl.querySelector(".gbif-map-status");
+    const fmt = new Intl.NumberFormat("en-GB");
+
+    // Same style in light and dark mode (light map, darker green = more records): no tile reload on theme switch
+    const ratio = window.devicePixelRatio > 1 ? 2 : 1;
+    const baseUrl = `https://tile.gbif.org/3857/omt/{z}/{x}/{y}@${ratio}x.png?style=gbif-light`;
+    const dataParams = new URLSearchParams({
+      srs: "EPSG:3857",
+      bin: "hex",
+      hexPerTile: "45",
+      style: "green2.poly",
+      ...GBIF_FILTER,
+    });
+    const dataUrl = `https://api.gbif.org/v2/map/occurrence/adhoc/{z}/{x}/{y}@${ratio}x.png?${dataParams}`;
+
+    function loadLeaflet() {
+      if (window.L) return Promise.resolve(window.L);
+      return new Promise((resolve, reject) => {
+        const css = document.createElement("link");
+        css.rel = "stylesheet";
+        css.href = LEAFLET_CSS;
+        css.integrity = LEAFLET_CSS_SRI;
+        css.crossOrigin = "anonymous";
+        document.head.appendChild(css);
+        const js = document.createElement("script");
+        js.src = LEAFLET_JS;
+        js.integrity = LEAFLET_JS_SRI;
+        js.crossOrigin = "anonymous";
+        js.onload = () => resolve(window.L);
+        js.onerror = reject;
+        document.head.appendChild(js);
+      });
+    }
+
+    function initMap(L) {
+      // GBIF tiles are 512 px -> tileSize 512 + zoomOffset -1 keeps Leaflet's zoom levels standard
+      const tileOpts = { tileSize: 512, zoomOffset: -1, minZoom: 1, maxZoom: 12 };
+      const map = L.map(gbifMapEl, { scrollWheelZoom: false, worldCopyJump: true, minZoom: 1, zoomSnap: 0.25 });
+      map.fitBounds([[-26, -18], [69, 52]]); // Sweden plus field sites in Africa and Madagascar
+      const base = L.tileLayer(baseUrl, {
+        ...tileOpts,
+        attribution:
+          '<a href="https://www.gbif.org/" target="_blank" rel="noopener">GBIF</a> · © <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      }).addTo(map);
+      // GBIF answers some empty hex tiles with an error image (red "503") -> only show tiles that return 200
+      const SafeTileLayer = L.TileLayer.extend({
+        createTile(coords, done) {
+          const tile = document.createElement("img");
+          tile.alt = "";
+          fetch(this.getTileUrl(coords))
+            .then((res) => {
+              if (res.status !== 200) throw new Error(String(res.status));
+              return res.blob();
+            })
+            .then((blob) => {
+              tile.onload = () => {
+                URL.revokeObjectURL(tile.src);
+                done(null, tile);
+              };
+              tile.src = URL.createObjectURL(blob);
+            })
+            .catch(() => {
+              tile.onload = () => done(null, tile);
+              tile.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // transparent pixel
+            });
+          return tile;
+        },
+      });
+      new SafeTileLayer(dataUrl, tileOpts).addTo(map);
+      base.once("load", () => statusEl && statusEl.remove());
+
+      // scroll-wheel zoom only after the user clicks the map (no scroll hijacking)
+      map.on("click focus", () => map.scrollWheelZoom.enable());
+      map.on("mouseout blur", () => map.scrollWheelZoom.disable());
+    }
+
+    function loadStats() {
+      const predicates = Object.entries(GBIF_FILTER)
+        .map(([key, value]) => `{type: equals, key: "${key}", value: "${value}"}`)
+        .join(", ");
+      const query = `{ occurrenceSearch(predicate: {type: and, predicates: [${predicates}]}) {
+        documents(size: 0) { total }
+        cardinality { speciesKey datasetKey countryCode }
+        facet { datasetKey(size: 500) { key count dataset { title } } }
+      } }`;
+      return fetch("https://graphql.gbif.org/graphql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error(`GBIF ${res.status}`);
+          return res.json();
+        })
+        .then((json) => {
+          const search = json.data.occurrenceSearch;
+          const values = {
+            records: search.documents.total,
+            species: search.cardinality.speciesKey,
+            datasets: search.cardinality.datasetKey,
+            countries: search.cardinality.countryCode,
+          };
+          document.querySelectorAll("[data-gbif-stat]").forEach((el) => {
+            const value = values[el.getAttribute("data-gbif-stat")];
+            if (typeof value === "number") countUp(el, value);
+          });
+
+          const list = document.getElementById("gbifDatasetList");
+          if (list) {
+            list.replaceChildren(
+              ...search.facet.datasetKey.map((d) => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = `https://www.gbif.org/dataset/${d.key}`;
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                a.textContent = (d.dataset && d.dataset.title) || d.key;
+                const count = document.createElement("span");
+                count.className = "gbif-dataset-count";
+                count.textContent = ` · ${fmt.format(d.count)} records`;
+                li.append(a, count);
+                return li;
+              })
+            );
+          }
+        });
+    }
+
+    function countUp(el, target) {
+      const startTime = performance.now();
+      const durationMs = 1200;
+      function tick(now) {
+        const t = Math.min(1, (now - startTime) / durationMs);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = fmt.format(Math.round(target * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const mapObserver = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        mapObserver.disconnect();
+        loadLeaflet()
+          .then(initMap)
+          .catch(() => {
+            if (statusEl) statusEl.textContent = "The map could not be loaded right now. Explore the data on GBIF instead.";
+          });
+        loadStats().catch(() => {
+          document.querySelectorAll("[data-gbif-stat]").forEach((el) => (el.textContent = "–"));
+        });
+      },
+      { rootMargin: "600px 0px" }
+    );
+    mapObserver.observe(gbifMapEl);
+  }
+
 })();
