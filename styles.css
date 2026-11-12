@@ -1,5 +1,6 @@
 /* ---------- Theme tokens ---------- */
 :root{
+  color-scheme: dark;
   --bg: #0c1d12;
   --bg2:#13301f;
   --page-bg-solid: #13301f;
@@ -37,6 +38,7 @@
 }
 
 [data-theme="light"]{
+  color-scheme: light;
   --bg: #f3f8f1;
   --bg2:#e7f0e1;
   --page-bg-solid: #e7f0e1;
