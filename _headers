@@ -1,0 +1,9 @@
+# Netlify response headers (security). Keep the CSP in sync when adding external services:
+# fonts (Google), Leaflet (cdnjs), GBIF map/API, contact form (formsubmit.co), meeting sign-up (Apps Script),
+# embeds (YouTube, OpenStreetMap). Images may come from any https host (partner/resource logos).
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.gbif.org https://graphql.gbif.org https://tile.gbif.org https://formsubmit.co https://script.google.com https://script.googleusercontent.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.openstreetmap.org https://script.google.com https://script.googleusercontent.com; form-action 'self' https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'

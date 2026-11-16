@@ -1972,3 +1972,29 @@ input:focus, textarea:focus{ box-shadow: var(--focus); }
 }
 .contact-icon-linkedin{ flex: none; color: #0a66c2; }
 [data-theme="dark"] .contact-icon-linkedin, :root:not([data-theme="light"]) .contact-icon-linkedin{ color: #fff; }
+
+/* ---------- Glossary tooltips (see script.js "Glossary tooltips") ---------- */
+abbr.term{
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  cursor: help;
+  border-radius: 3px;
+}
+abbr.term:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+.term-tip{
+  position: absolute;
+  z-index: 1000;
+  max-width: min(300px, calc(100vw - 16px));
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #f3f8f1;
+  color: #13301f;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+[data-theme="light"] .term-tip{ background: #13301f; color: #f3f8f1; box-shadow: 0 10px 30px rgba(10,12,20,0.22); }
+.term-tip[hidden]{ display: none; }

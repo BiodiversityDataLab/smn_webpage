@@ -578,4 +578,92 @@
     mapObserver.observe(gbifMapEl);
   }
 
+  // Contact form: attached here instead of an inline onsubmit (the CSP in _headers blocks inline handlers)
+  document.querySelectorAll("[data-contact-form]").forEach((form) => {
+    form.addEventListener("submit", window.SMN.handleFakeSubmit);
+  });
+
+  // ---------- Glossary tooltips ----------
+  // First mention of each abbreviation per section gets a dotted underline; hover, focus or tap shows a short definition.
+  // Add or edit terms here. Not applied inside headings, links, buttons or form fields.
+  const GLOSSARY = {
+    ENA: "European Nucleotide Archive: the public archive for raw DNA sequence reads and their metadata",
+    ASV: "Amplicon sequence variant: an exact DNA sequence found in a sample, the basic unit of metabarcoding results",
+    FAIR: "Findable, Accessible, Interoperable, Reusable: principles that make research data easy to find and reuse",
+    GBIF: "Global Biodiversity Information Facility: the international open database for species occurrence data",
+    SBDI: "Swedish Biodiversity Data Infrastructure: the national infrastructure for biodiversity data, which runs the ASV Portal",
+    NBIS: "National Bioinformatics Infrastructure Sweden: bioinformatics and data management support, part of SciLifeLab",
+    PCR: "Polymerase chain reaction: copies a short DNA marker region many times so it can be sequenced",
+    eDNA: "Environmental DNA: DNA that organisms leave behind in water, soil or air, sampled without catching them",
+    OTU: "Operational taxonomic unit: a cluster of similar sequences, the older alternative to ASVs",
+    BIOM: "Biological Observation Matrix: a file format for tables of sequence counts per sample",
+    COI: "Cytochrome c oxidase subunit I: a mitochondrial gene used as the standard DNA barcode for animals",
+    DOI: "Digital Object Identifier: a permanent link that makes a dataset or publication citable",
+    OBIS: "Ocean Biodiversity Information System: the global open database for marine species data",
+  };
+  const PLURAL = { ASVs: "ASV", OTUs: "OTU" };
+  const termRe = new RegExp(`(^|[^\\w-])(${[...Object.keys(PLURAL), ...Object.keys(GLOSSARY)].join("|")})(?![\\w-])`);
+  const TERM_SKIP = "a, button, abbr, h1, h2, h3, h4, label, input, textarea, select, summary, script, style, svg, .btn";
+
+  const termTip = document.createElement("div");
+  termTip.className = "term-tip";
+  termTip.id = "termTip";
+  termTip.setAttribute("role", "tooltip");
+  termTip.hidden = true;
+  document.body.appendChild(termTip);
+
+  function showTermTip(el) {
+    termTip.textContent = el.dataset.tip;
+    termTip.hidden = false;
+    const r = el.getBoundingClientRect();
+    const t = termTip.getBoundingClientRect();
+    const left = Math.min(Math.max(8, r.left + r.width / 2 - t.width / 2), window.innerWidth - t.width - 8);
+    const above = r.top - t.height - 8;
+    termTip.style.left = `${left + window.scrollX}px`;
+    termTip.style.top = `${(above > 8 ? above : r.bottom + 8) + window.scrollY}px`;
+  }
+  function hideTermTip() {
+    termTip.hidden = true;
+  }
+
+  document.querySelectorAll("main section").forEach((section) => {
+    const seen = new Set();
+    const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => (n.parentElement.closest(TERM_SKIP) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      let rest = node;
+      let m;
+      while ((m = termRe.exec(rest.nodeValue))) {
+        const word = m[2];
+        const key = PLURAL[word] || word;
+        const start = m.index + m[1].length;
+        if (seen.has(key)) {
+          rest = rest.splitText(start + word.length); // already explained in this section, look further
+          continue;
+        }
+        seen.add(key);
+        const termNode = rest.splitText(start);
+        rest = termNode.splitText(word.length);
+        const abbr = document.createElement("abbr");
+        abbr.className = "term";
+        abbr.tabIndex = 0;
+        abbr.dataset.tip = GLOSSARY[key];
+        abbr.setAttribute("aria-describedby", "termTip");
+        abbr.textContent = word;
+        termNode.replaceWith(abbr);
+        abbr.addEventListener("mouseenter", () => showTermTip(abbr));
+        abbr.addEventListener("mouseleave", hideTermTip);
+        abbr.addEventListener("focus", () => showTermTip(abbr));
+        abbr.addEventListener("blur", hideTermTip);
+      }
+    });
+  });
+  window.addEventListener("scroll", hideTermTip, { passive: true });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") hideTermTip();
+  });
+
 })();
